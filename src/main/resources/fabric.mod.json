@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "sifu",
+  "version": "${version}",
+  "name": "Sifu",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Mrsypz/Sifu"
+  },
+  "license": "MIT",
+  "icon": "assets/sifu/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "sypztep.sifu.client.SifuClient"
+    ],
+    "main": [
+      "sypztep.sifu.Sifu"
+    ]
+  },
+  "mixins": [
+    "sifu.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

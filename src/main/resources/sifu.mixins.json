@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "sypztep.sifu.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "effect.EntityNavigationMixin",
+    "effect.LivingEntityMixin",
+    "effect.LookControlMixin",
+    "effect.MobEntityMixin",
+    "parry.LivingEntityMixin"
+  ],
+  "client": [
+    "effect.stun.client.CameraMixin",
+    "effect.stun.client.KeyboardMixin",
+    "effect.stun.client.MouseMixin",
+    "parry.client.HeldItemFeatureRendererMixin",
+    "parry.client.HeldItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
