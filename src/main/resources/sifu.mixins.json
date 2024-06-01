@@ -11,6 +11,8 @@
     "parry.LivingEntityMixin"
   ],
   "client": [
+    "carve.client.HeldItemFeatureRendererMixin",
+    "carve.client.HeldItemRendererMixin",
     "effect.stun.client.CameraMixin",
     "effect.stun.client.KeyboardMixin",
     "effect.stun.client.MouseMixin",
