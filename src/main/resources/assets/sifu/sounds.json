@@ -1,0 +1,14 @@
+{
+  "item.carve": {
+    "sounds": [
+      "sifu:item/carve"
+    ],
+    "subtitle": "subtitles.sifu.item.carve"
+  },
+  "item.stalwart": {
+    "sounds": [
+      "sifu:item/stalwart"
+    ],
+    "subtitle": "subtitles.sifu.item.stalwart"
+  }
+}

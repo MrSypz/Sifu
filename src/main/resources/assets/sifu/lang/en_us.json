@@ -1,0 +1,8 @@
+{
+  "enchantment.sifu.carve" : "Carve",
+  "enchantment.sifu.carve.desc": "Reduces the target's protection with each attack. After attacking for a while, Right-clicking can trigger a healing effect.",
+  "enchantment.sifu.parry": "Parry",
+  "enchantment.sifu.parry.desc": "Counter the target attack and stun them for a second",
+  "enchantment.sifu.thousandneedle": "Thousand needle",
+  "enchantment.sifu.thousandneedle.desc": "Shoots needles from the sky. The number of needles increases with the status effect amplifier."
+}

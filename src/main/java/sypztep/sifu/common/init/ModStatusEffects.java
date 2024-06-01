@@ -17,23 +17,25 @@ public class ModStatusEffects {
     public static RegistryEntry<StatusEffect> STALWART;
     public static RegistryEntry<StatusEffect> STALWART_COOLDOWN;
     public static RegistryEntry<StatusEffect> CARVE;
+    public static RegistryEntry<StatusEffect> THOUSANDNEEDLE;
+
 
     public static void initEffects() {
-        STUN = registerEffect("stun", new StunEffect());
-        STALWART = registerEffect("stalwart", new CooldownEffect(StatusEffectCategory.NEUTRAL)
+        STUN = init("stun", new StunEffect());
+        STALWART = init("stalwart", new CooldownEffect(StatusEffectCategory.NEUTRAL)
                 .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
                         "775287b5-79b9-48f4-9afe-ab8fd2cfd35f",
                         0.02D,
                         EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        STALWART_COOLDOWN = registerEffect("stalwart_cooldown", new CooldownEffect(StatusEffectCategory.BENEFICIAL));
-        CARVE = registerEffect("carve", new MarkEffect(StatusEffectCategory.HARMFUL)
+        STALWART_COOLDOWN = init("stalwart_cooldown", new CooldownEffect(StatusEffectCategory.BENEFICIAL));
+        CARVE = init("carve", new MarkEffect(StatusEffectCategory.HARMFUL)
                 .addAttributeModifier(EntityAttributes.GENERIC_ARMOR,
                         "9f66ca04-e8c5-4225-952c-665ccb332fe7",
                         -0.08D,
                         EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        THOUSANDNEEDLE = init("thousandneedle", new CooldownEffect(StatusEffectCategory.NEUTRAL));
     }
-    public static RegistryEntry<StatusEffect> registerEffect(String name, StatusEffect effect) {
+    public static RegistryEntry<StatusEffect> init(String name, StatusEffect effect) {
         return Registry.registerReference(Registries.STATUS_EFFECT, Sifu.id(name), effect);
     }
-
 }

@@ -26,4 +26,11 @@ public abstract class MouseMixin {
             callbackInfo.cancel();
         }
     }
+    @Inject(method = "updateMouse", at = @At("HEAD"),cancellable = true)
+    private void updateMouse(double timeDelta, CallbackInfo ci) {
+        if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().player.hasStatusEffect(ModStatusEffects.STUN) && !MinecraftClient.getInstance().isPaused()) {
+            KeyBinding.unpressAll();
+            ci.cancel();
+        }
+    }
 }

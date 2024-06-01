@@ -20,8 +20,9 @@ public class ParryEnchantment extends SpecialEnchantment {
     @Override
     protected boolean canAccept(Enchantment other) {
         return super.canAccept(other)
-                && !other.equals(Enchantments.SWEEPING_EDGE)
-                && !other.equals(Enchantments.FIRE_ASPECT);
+                && other != (Enchantments.SWEEPING_EDGE)
+                && other != Enchantments.FIRE_ASPECT
+                && other != (ModEnchantments.CARVE);
     }
 
     @Override
