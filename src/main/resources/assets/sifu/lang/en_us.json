@@ -9,5 +9,7 @@
   "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
   "effect.sifu.stalwart" : "Stalwart",
   "effect.sifu.carve" : "Carve",
-  "effect.sifu.thousandneedle" : "Thousand Needle"
+  "effect.sifu.thousandneedle" : "Thousand Needle",
+
+  "sifu.modifytooltip.carve": "Carve Heal Amount: "
 }

@@ -8,8 +8,11 @@
     "effect.LivingEntityMixin",
     "effect.LookControlMixin",
     "effect.MobEntityMixin",
+    "gamechange.EntityAttributesMixin",
     "parry.LivingEntityMixin",
-    "util.PersistentProjectileEntityMixin"
+    "util.AccesorAttribute",
+    "util.PersistentProjectileEntityMixin",
+    "veil.LivingEntityMixin"
   ],
   "client": [
     "carve.client.HeldItemFeatureRendererMixin",
@@ -18,7 +21,11 @@
     "effect.stun.client.KeyboardMixin",
     "effect.stun.client.MouseMixin",
     "parry.client.HeldItemFeatureRendererMixin",
-    "parry.client.HeldItemRendererMixin"
+    "parry.client.HeldItemRendererMixin",
+    "perception.client.LightmapTextureManagerMixin",
+    "perception.client.MinecraftClientMixin",
+    "util.InGameHudAccessor",
+    "veil.client.EntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

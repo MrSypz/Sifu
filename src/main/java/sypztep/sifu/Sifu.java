@@ -2,14 +2,11 @@ package sypztep.sifu;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.util.Identifier;
 import sypztep.sifu.client.payload.AddCarveSoulParticlePayload;
 import sypztep.sifu.common.init.*;
 import sypztep.sifu.common.payload.CarveSoulPayload;
-
-import java.util.List;
 
 public class Sifu implements ModInitializer {
     public static final String MODID = "sifu";

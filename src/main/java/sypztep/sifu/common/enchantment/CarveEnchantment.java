@@ -2,6 +2,9 @@ package sypztep.sifu.common.enchantment;
 
 import com.sypztep.common.api.EnchantmentAttackHandler;
 import com.sypztep.common.util.StatusEffectUtil;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -22,9 +25,12 @@ import sypztep.sifu.common.init.ModSoundEvents;
 import sypztep.sifu.common.init.ModStatusEffects;
 import sypztep.sifu.common.payload.CarveSoulPayload;
 import sypztep.sifu.common.util.AbilityHelper;
+import sypztep.sifu.common.util.RenderHealAmount;
+import sypztep.sifu.mixin.util.InGameHudAccessor;
 
 public class CarveEnchantment extends SpecialEnchantment implements EnchantmentAttackHandler {
     private boolean soundPlayed = false;
+    private static float HealAmount;
 
     public CarveEnchantment(Properties properties) {
         super(properties);
@@ -32,9 +38,11 @@ public class CarveEnchantment extends SpecialEnchantment implements EnchantmentA
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return super.canAccept(other)
-                && other != Enchantments.SHARPNESS
-                && other != ModEnchantments.PARRY;
+        return super.canAccept(other) && other != Enchantments.SHARPNESS && other != ModEnchantments.PARRY;
+    }
+
+    public static float getHealAmount() {
+        return HealAmount;
     }
 
     //todo: spawn a razer beam instead a flame particle
@@ -42,11 +50,11 @@ public class CarveEnchantment extends SpecialEnchantment implements EnchantmentA
     public void onFinishUsing(ItemStack stack, World world, LivingEntity user, int level) {
         int amp = StatusEffectUtil.getCount(user, ModStatusEffects.STALWART, level);
         double value = user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        HealAmount = amp + AbilityHelper.getMissingHealth(user, 0.25f);
         if (StatusEffectUtil.dontHave(ModStatusEffects.STALWART_COOLDOWN, user)) {
             AbilityHelper.boxArea(user, user.getWorld().getDamageSources().playerAttack((PlayerEntity) user), amp, (float) (value * 1.5f), 1.0f); //150% Damage base on player attack damage
-            user.heal(amp + AbilityHelper.getMissingHealth(user, 0.25f));
-            if (user.getWorld().isClient())
-                CarveSoulPayload.send(amp);
+            user.heal(HealAmount);
+            if (user.getWorld().isClient()) CarveSoulPayload.send(amp);
             carvesoulParticle(user, amp);
             user.removeStatusEffect(ModStatusEffects.STALWART);
             StatusEffectUtil.add(user, ModStatusEffects.STALWART_COOLDOWN, 240 - (level * 2));
@@ -96,7 +104,6 @@ public class CarveEnchantment extends SpecialEnchantment implements EnchantmentA
     @Override
     public void applyOnTarget(LivingEntity user, Entity target, int level) {
         int carvecount = 0;
-
         if (level != 0 && target.isAttackable() && !target.getWorld().isClient && user.distanceTo(target) <= 6 && target instanceof LivingEntity living) {
             if (living.getArmor() > 0) {
                 StatusEffectInstance markInstance = living.getStatusEffect(ModStatusEffects.CARVE);

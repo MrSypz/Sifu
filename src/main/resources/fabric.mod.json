@@ -12,6 +12,9 @@
   "icon": "assets/sifu/icon.png",
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "sypztep.sifu.data.ModDataGenerator"
+    ],
     "client": [
       "sypztep.sifu.client.SifuClient"
     ],

@@ -16,11 +16,15 @@ public class ModEnchantments {
     public static final Enchantment PARRY = new ParryEnchantment(properties(ItemTags.SHARP_WEAPON_ENCHANTABLE,3,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND));
     public static final Enchantment CARVE = new CarveEnchantment(properties(ItemTags.SHARP_WEAPON_ENCHANTABLE,5,EquipmentSlot.MAINHAND));
     public static final Enchantment THOUSAND_NEEDLE = new ThousandNeedleEnchantment(properties(ItemTags.HOES,3,EquipmentSlot.MAINHAND));
+    public static final Enchantment PERCEPTION = new Enchantment(properties(ItemTags.HEAD_ARMOR_ENCHANTABLE, 2, EquipmentSlot.HEAD));
+    public static final Enchantment VEIL = new Enchantment(properties(ItemTags.HEAD_ARMOR_ENCHANTABLE, 2, EquipmentSlot.HEAD));
 
     public static void init() {
         registry("parry",PARRY);
         registry("carve",CARVE);
         registry("thousandneedle",THOUSAND_NEEDLE);
+        registry("perception",PERCEPTION);
+        registry("veil",VEIL);
     }
     private static Enchantment.Properties properties(TagKey<Item> supportedItems, int maxLevel, EquipmentSlot... slots) {
         return Enchantment.properties(supportedItems, 5, maxLevel, Enchantment.leveledCost(5, 6), Enchantment.leveledCost(11, 6), 2, slots);
