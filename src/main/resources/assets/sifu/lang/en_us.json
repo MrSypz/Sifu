@@ -4,5 +4,10 @@
   "enchantment.sifu.parry": "Parry",
   "enchantment.sifu.parry.desc": "Counter the target attack and stun them for a second",
   "enchantment.sifu.thousandneedle": "Thousand needle",
-  "enchantment.sifu.thousandneedle.desc": "Shoots needles from the sky. The number of needles increases with the status effect amplifier."
+  "enchantment.sifu.thousandneedle.desc": "Shoots needles from the sky. The number of needles increases with the status effect amplifier.",
+
+  "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
+  "effect.sifu.stalwart" : "Stalwart",
+  "effect.sifu.carve" : "Carve",
+  "effect.sifu.thousandneedle" : "Thousand Needle"
 }

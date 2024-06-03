@@ -13,9 +13,7 @@ public interface ModSoundEvents {
 	Map<SoundEvent, Identifier> SOUND_EVENTS = new LinkedHashMap<>();
 	//Sound
 	SoundEvent ITEM_CARVE = createSoundEvent("item.carve");
-	SoundEvent ITEM_STIGMA = createSoundEvent("item.stigma");
 	SoundEvent ITEM_STALWART = createSoundEvent("item.stalwart");
-	SoundEvent ITEM_PRAMINAX = createSoundEvent("item.praminax");
 
 	static void init() {
 		SOUND_EVENTS.keySet().forEach((soundEvent) -> {

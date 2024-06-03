@@ -2,6 +2,7 @@ package sypztep.sifu.common.enchantment;
 
 import com.sypztep.common.api.EnchantmentAttackHandler;
 import com.sypztep.common.util.StatusEffectUtil;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,11 +27,6 @@ public class ThousandNeedleEnchantment extends SpecialEnchantment implements Enc
     @Override
     public UseAction useAction(ItemStack stack) {
         return UseAction.BOW;
-    }
-
-    @Override
-    public void applyOnTarget(LivingEntity user, Entity target, int level) {
-
     }
 
     @Override
@@ -68,11 +64,6 @@ public class ThousandNeedleEnchantment extends SpecialEnchantment implements Enc
     }
 
     @Override
-    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-
-    }
-
-    @Override
     public TypedActionResult<ItemStack> onUse(World world, PlayerEntity user, Hand hand, ItemStack stack) {
         int amp = StatusEffectUtil.getCount(user, ModStatusEffects.THOUSANDNEEDLE, getMaxLevel());
         if (amp > 0) {
@@ -85,5 +76,27 @@ public class ThousandNeedleEnchantment extends SpecialEnchantment implements Enc
     @Override
     public int maxUseTime(ItemStack stack) {
         return 10;
+    }
+
+    @Override
+    public boolean isAvailableForEnchantedBookOffer() {
+        return false;
+    }
+    @Override
+    public boolean isTreasure() {
+        return true;
+    }
+    @Override
+    public boolean isAvailableForRandomSelection() {
+        return false;
+    }
+
+    @Override
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+
+    }
+    @Override
+    public void applyOnTarget(LivingEntity user, Entity target, int level) {
+
     }
 }

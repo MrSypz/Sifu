@@ -6,10 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.util.Identifier;
 import sypztep.sifu.client.payload.AddCarveSoulParticlePayload;
-import sypztep.sifu.common.init.ModEnchantments;
-import sypztep.sifu.common.init.ModEntityTypes;
-import sypztep.sifu.common.init.ModSoundEvents;
-import sypztep.sifu.common.init.ModStatusEffects;
+import sypztep.sifu.common.init.*;
 import sypztep.sifu.common.payload.CarveSoulPayload;
 
 import java.util.List;
@@ -25,6 +22,7 @@ public class Sifu implements ModInitializer {
         ModStatusEffects.initEffects();
         ModSoundEvents.init();
         ModEntityTypes.init();
+        ModLootableModify.init();
         initPayloads();
     }
     private void initPayloads() {
