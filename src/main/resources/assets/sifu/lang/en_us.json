@@ -5,6 +5,10 @@
   "enchantment.sifu.parry.desc": "Counter the target attack and stun them for a second",
   "enchantment.sifu.thousandneedle": "Thousand needle",
   "enchantment.sifu.thousandneedle.desc": "Shoots needles from the sky. The number of needles increases with the status effect amplifier.",
+  "enchantment.sifu.perception": "Perception",
+  "enchantment.sifu.perception.desc": "Open the third eye now can see in the dark and detect near by entity.",
+  "enchantment.sifu.veil": "Veil",
+  "enchantment.sifu.veil.desc": "More harder to detect and harder to target by monster.",
 
   "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
   "effect.sifu.stalwart" : "Stalwart",
