@@ -75,7 +75,7 @@ public class ThousandNeedleEnchantment extends SpecialEnchantment implements Enc
 
     @Override
     public int maxUseTime(ItemStack stack) {
-        return 10;
+        return 30 / getMaxLevel();
     }
 
     @Override

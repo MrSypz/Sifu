@@ -1,6 +1,7 @@
 package sypztep.sifu.common.enchantment;
 
 import com.sypztep.common.api.EnchantmentAttackHandler;
+import com.sypztep.common.api.EnchantmentDamageHandler;
 import com.sypztep.common.util.StatusEffectUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -8,6 +9,8 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -20,6 +23,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.common.init.ModEnchantments;
 import sypztep.sifu.common.init.ModSoundEvents;
 import sypztep.sifu.common.init.ModStatusEffects;
@@ -28,7 +32,15 @@ import sypztep.sifu.common.util.AbilityHelper;
 import sypztep.sifu.common.util.RenderHealAmount;
 import sypztep.sifu.mixin.util.InGameHudAccessor;
 
-public class CarveEnchantment extends SpecialEnchantment implements EnchantmentAttackHandler {
+public class CarveEnchantment extends SpecialEnchantment implements EnchantmentAttackHandler, EnchantmentDamageHandler {
+    @Override
+    public float getAttackDamage(int level, EquipmentSlot slot, LivingEntity user, LivingEntity target) {
+        if (target.getArmor() == 0) {
+            return level;
+        }
+        return 0;
+    }
+
     private boolean soundPlayed = false;
     private static float HealAmount;
 

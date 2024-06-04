@@ -9,11 +9,15 @@
   "enchantment.sifu.perception.desc": "Open the third eye now can see in the dark and detect near by entity.",
   "enchantment.sifu.veil": "Veil",
   "enchantment.sifu.veil.desc": "More harder to detect and harder to target by monster.",
+  "enchantment.sifu.lighthand": "Lighthand",
+  "enchantment.sifu.lumberjack": "Lumberjack",
+  "enchantment.sifu.cryobsider": "CryObsider",
 
   "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
   "effect.sifu.stalwart" : "Stalwart",
   "effect.sifu.carve" : "Carve",
   "effect.sifu.thousandneedle" : "Thousand Needle",
+  "sifu.item.wardenrite_fragment" : "Wardenrite Fragment",
 
   "sifu.modifytooltip.carve": "Carve Heal Amount: "
 }

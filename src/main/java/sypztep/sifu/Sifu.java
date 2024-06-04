@@ -1,15 +1,25 @@
 package sypztep.sifu;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sypztep.sifu.client.payload.AddCarveSoulParticlePayload;
+import sypztep.sifu.common.event.LightHandEvent;
+import sypztep.sifu.common.event.LumberjackEvent;
 import sypztep.sifu.common.init.*;
 import sypztep.sifu.common.payload.CarveSoulPayload;
+import sypztep.sifu.common.reload.LightHandBaseBlockReloadListener;
 
 public class Sifu implements ModInitializer {
     public static final String MODID = "sifu";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+
     public static Identifier id (String path) {
         return new Identifier(MODID,path);
     }
@@ -20,7 +30,12 @@ public class Sifu implements ModInitializer {
         ModSoundEvents.init();
         ModEntityTypes.init();
         ModLootableModify.init();
+        ModItems.init();
         initPayloads();
+
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LightHandBaseBlockReloadListener());
+        PlayerBlockBreakEvents.BEFORE.register(new LightHandEvent());
+        PlayerBlockBreakEvents.BEFORE.register(new LumberjackEvent());
     }
     private void initPayloads() {
         PayloadTypeRegistry.playS2C().register(AddCarveSoulParticlePayload.ID, AddCarveSoulParticlePayload.CODEC);

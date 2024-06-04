@@ -3,9 +3,12 @@ package sypztep.sifu.data.provider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import sypztep.sifu.common.init.ModEnchantments;
+import sypztep.sifu.common.tag.ModEnchantmentTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,6 +19,12 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
 
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+		getOrCreateTagBuilder(ModEnchantmentTags.UTILITY)
+				.add(ModEnchantments.VEIL)
+				.add(ModEnchantments.PERCEPTION)
+				.add(Enchantments.SHARPNESS)
+				.add(Enchantments.FORTUNE);
+
 //		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_AUXILIARY_MOVEMENT_ENHANCEMENTS)
 //				.add(ModEnchantments.STRAFE)
 //				.add(ModEnchantments.DASH)
@@ -23,7 +32,9 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
 //				.add(ModEnchantments.BUOY)
 //				.add(ModEnchantments.GALE);
 		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENTS)
-				.add(ModEnchantments.VEIL);
+				.add(ModEnchantments.VEIL)
+				.add(ModEnchantments.CRYOBSIDER);
+
 //		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_SPEED_ENHANCEMENTS)
 //				.add(ModEnchantments.ADRENALINE)
 //				.add(ModEnchantments.BUOY);

@@ -32,23 +32,20 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import sypztep.sifu.common.init.ModEnchantments;
+import sypztep.sifu.common.init.ModSoundEvents;
 import sypztep.sifu.common.init.ModStatusEffects;
+import sypztep.sifu.common.tag.ModDamageTags;
+import sypztep.sifu.common.tag.ModEnchantmentTags;
 
 @Mixin(value=LivingEntity.class, priority=999)
 public abstract class LivingEntityMixin extends Entity {
     protected LivingEntityMixin (EntityType<?> type, World world) {
         super(type, world);
     }
-
     @Shadow
     protected ItemStack activeItemStack;
-
     @Shadow
     protected int itemUseTimeLeft;
-
-
-    @Shadow private @Nullable LivingEntity attacker;
-
     @Unique
     private boolean isParrying () {
         return EnchantmentHelper.getLevel(ModEnchantments.PARRY, this.activeItemStack) > 0;
@@ -62,13 +59,14 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method="blockedByShield", at=@At("RETURN"), cancellable=true)
     private void preventParry (DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         if (cir.getReturnValueZ() && isParrying()) {
-            if (!source.isIndirect() && source.getAttacker() instanceof LivingEntity living && living.disablesShield()) cir.setReturnValue(false);
+            if (source.isIn(ModDamageTags.BYPASSES_PARRY)) cir.setReturnValue(false);
+            else if (!source.isIndirect() && source.getAttacker() instanceof LivingEntity living && living.disablesShield()) cir.setReturnValue(false);
         }
     }
 
     @ModifyArg(method="handleStatus(B)V", at=@At(value="INVOKE", target="Lnet/minecraft/entity/LivingEntity;playSound(Lnet/minecraft/sound/SoundEvent;FF)V", ordinal=2))
     private SoundEvent playParrySound (SoundEvent soundEvent) {
-        if (isParrying()) return SoundEvents.BLOCK_ANVIL_LAND;
+        if (isParrying()) return ModSoundEvents.ENTITY_PARRY;
         return soundEvent;
     }
 

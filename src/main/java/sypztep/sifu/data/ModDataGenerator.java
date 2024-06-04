@@ -2,9 +2,7 @@ package sypztep.sifu.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import sypztep.sifu.data.provider.ModDamageTypeTagProvider;
-import sypztep.sifu.data.provider.ModEnchantmentTagProvider;
-import sypztep.sifu.data.provider.ModEntityTypeTagProvider;
+import sypztep.sifu.data.provider.*;
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -13,5 +11,8 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModDamageTypeTagProvider::new);
 		pack.addProvider(ModEnchantmentTagProvider::new);
 		pack.addProvider(ModEntityTypeTagProvider::new);
+		pack.addProvider(ModBlockTagProvider::new);
+		pack.addProvider(ModItemTagProvider::new);
+		pack.addProvider(ModModelProvider::new);
 	}
 }

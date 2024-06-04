@@ -4,14 +4,18 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "cryobsider.LivingEntityMixin",
     "effect.EntityNavigationMixin",
     "effect.LivingEntityMixin",
     "effect.LookControlMixin",
     "effect.MobEntityMixin",
-    "gamechange.EntityAttributesMixin",
+    "lumberjack.AbstractBlockMixin",
+    "lumberjack.PlayerEntityMixin",
     "parry.LivingEntityMixin",
-    "util.AccesorAttribute",
+    "util.ItemEntityAccessor",
     "util.PersistentProjectileEntityMixin",
+    "vanillatweak.crisptwing.LivingEntityMixin",
+    "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
     "veil.LivingEntityMixin"
   ],
   "client": [

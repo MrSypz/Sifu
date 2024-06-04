@@ -14,14 +14,15 @@ import sypztep.sifu.common.init.ModEntityTypes;
 public class SifuClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> TooltipItem.onTooltipRender(stack,lines,context));
+        ShaderRenderer.init();
         initPayloads();
+        HudRenderCallback.EVENT.register(new HealthBarRenderEvent());
+
+        EntityRendererRegistry.register(ModEntityTypes.NEEDLE, NeedleEntityRenderer::new);
     }
 
     private void initPayloads() {
-        ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> TooltipItem.onTooltipRender(stack,lines,context));
-        EntityRendererRegistry.register(ModEntityTypes.NEEDLE, NeedleEntityRenderer::new);
-        ShaderRenderer.init();
-        HudRenderCallback.EVENT.register(new HealthBarRenderEvent());
         ClientPlayNetworking.registerGlobalReceiver(AddCarveSoulParticlePayload.ID, new AddCarveSoulParticlePayload.Receiver());
     }
 }

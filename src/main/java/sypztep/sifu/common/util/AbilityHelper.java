@@ -1,8 +1,10 @@
 package sypztep.sifu.common.util;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import sypztep.sifu.mixin.util.ItemEntityAccessor;
 
 import java.util.List;
 
@@ -64,6 +66,22 @@ public class AbilityHelper {
     public static boolean targetMissingHealthPercentBelow(Entity entity, float percentofmissinghealth) {
         // Check if the target's health is below 5%
         return entity instanceof LivingEntity living && living.getHealth() / living.getMaxHealth() <= percentofmissinghealth;
+    }
+    public static List<ItemEntity> mergeItemEntities(List<ItemEntity> drops) {
+        for (int i = drops.size() - 1; i >= 0; i--) {
+            if (i < drops.size() - 1) {
+                ItemEntity itemEntity = drops.get(i);
+                ItemEntity other = drops.get(i + 1);
+                ((ItemEntityAccessor) itemEntity).tryMergeitementity(other);
+                if (itemEntity.getStack().isEmpty()) {
+                    drops.remove(i);
+                }
+                if (other.getStack().isEmpty()) {
+                    drops.remove(i + 1);
+                }
+            }
+        }
+        return drops;
     }
     public static int getHitAmount(){
         return counts;

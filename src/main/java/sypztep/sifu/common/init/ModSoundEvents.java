@@ -14,6 +14,9 @@ public interface ModSoundEvents {
 	//Sound
 	SoundEvent ITEM_CARVE = createSoundEvent("item.carve");
 	SoundEvent ITEM_STALWART = createSoundEvent("item.stalwart");
+	SoundEvent ENTITY_PARRY = createSoundEvent("entity.parry");
+	SoundEvent ENTITY_GENERIC_WARDENSPINE = createSoundEvent("entity.generic.wardenspine");
+
 
 	static void init() {
 		SOUND_EVENTS.keySet().forEach((soundEvent) -> {
