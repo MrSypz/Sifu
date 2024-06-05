@@ -60,6 +60,7 @@ dependencies {
     modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
     modImplementation include('com.github.MrSypz:sypzalib:v0.1.3-beta')
+    modImplementation include('com.github.MrSypz:damned:v.1.0.2')
 
     modImplementation ("org.ladysnake:satin:${satin_version}")
 }

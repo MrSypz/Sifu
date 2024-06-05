@@ -9,6 +9,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryWrapper;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 import org.ladysnake.cca.api.v3.component.tick.CommonTickingComponent;
+import sypztep.damned.common.init.ModParticles;
 import sypztep.sifu.common.init.ModEnchantments;
 import sypztep.sifu.common.init.ModEntityComponents;
 import sypztep.sifu.common.init.ModSoundEvents;
@@ -142,9 +143,7 @@ public class MoonStepComponent implements AutoSyncedComponent, CommonTickingComp
 
     public static void addMoonStepParticles(Entity entity) {
         if (MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson() || entity != MinecraftClient.getInstance().cameraEntity) {
-            for (int i = 0; i < 8; i++) {
-                entity.getWorld().addParticle(ParticleTypes.CLOUD, entity.getParticleX(1), entity.getY(), entity.getParticleZ(1), 0, 0, 0);
-            }
+            entity.getWorld().addParticle(ModParticles.SHOCKWAVE_HORIZONTAL, entity.getParticleX(1), entity.getY(), entity.getParticleZ(1), 0, 0, 0);
         }
     }
 }
