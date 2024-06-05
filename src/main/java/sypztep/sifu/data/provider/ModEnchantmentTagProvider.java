@@ -26,6 +26,10 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
 				.add(Enchantments.FORTUNE)
 				.add(Enchantments.FEATHER_FALLING);
 
+		getOrCreateTagBuilder(ModEnchantmentTags.DISALLOWS_TOGGLEABLE_PASSIVE)
+				.add(Enchantments.RIPTIDE)
+				.add(ModEnchantments.LUMBERJACK);
+
 		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_AUXILIARY_MOVEMENT_ENHANCEMENTS)
 				.add(ModEnchantments.MOONSTEP);
 

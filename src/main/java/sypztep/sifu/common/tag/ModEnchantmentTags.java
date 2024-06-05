@@ -9,4 +9,6 @@ import sypztep.sifu.Sifu;
 public class ModEnchantmentTags {
 	public static final TagKey<Enchantment> UTILITY = TagKey.of(Registries.ENCHANTMENT.getKey(), Sifu.id("utility"));
 
+    public static final TagKey<Enchantment> DISALLOWS_TOGGLEABLE_PASSIVE = TagKey.of(Registries.ENCHANTMENT.getKey(), Sifu.id("disallows_toggleable_passive"));
+
 }
