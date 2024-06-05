@@ -23,7 +23,7 @@ public class EnchantedChestplatesIncreaseAirMobilityEvent implements ItemTooltip
 				icon = Text.literal("✔ ");
 				formatting = Formatting.DARK_GREEN;
 			}
-			lines.add(1, icon.append(Text.translatable("tooltip.enchancement.increases_air_mobility")).formatted(formatting));
+			lines.add(1, icon.append(Text.translatable("tooltip.sifu.increases_air_mobility")).formatted(formatting));
 		}
 	}
 }

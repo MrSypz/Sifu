@@ -10,6 +10,7 @@
     "effect.LivingEntityMixin",
     "effect.LookControlMixin",
     "effect.MobEntityMixin",
+    "enchantedchestplatesincreaseairmobility.ItemStackMixin",
     "lumberjack.AbstractBlockMixin",
     "lumberjack.PlayerEntityMixin",
     "parry.LivingEntityMixin",

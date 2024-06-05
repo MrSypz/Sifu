@@ -28,6 +28,8 @@ public class ModLootableModify {
                 } else if (EntityType.WARDEN.getLootTableId().equals(id)) {
                     lootPool.with(ItemEntry.builder(ModItems.WARDENRITE_FRAGMENT));
                     tableBuilder.pool(lootPool);
+                } else if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
+                    lootPool.with(ItemEntry.builder(Items.DIAMOND_BOOTS).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.MOONSTEP)));
                 }
             }
         });

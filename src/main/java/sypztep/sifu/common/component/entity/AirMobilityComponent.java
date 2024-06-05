@@ -37,7 +37,7 @@ public class AirMobilityComponent implements CommonTickingComponent {
 	public void tick() {
 		ItemStack stack = obj.getEquippedStack(EquipmentSlot.CHEST);
 		if (ModConfig.enchantedChestplatesIncreaseAirMobility && stack.getOrDefault(ModDataComponentTypes.TOGGLEABLE_PASSIVE, false)) {
-			if (!stack.hasEnchantments() && !stack.isOf(Items.ELYTRA)) {
+			if (!stack.hasEnchantments()) {
 				stack.remove(ModDataComponentTypes.TOGGLEABLE_PASSIVE);
 				return;
 			}

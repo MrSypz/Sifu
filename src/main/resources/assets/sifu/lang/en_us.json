@@ -12,6 +12,7 @@
   "enchantment.sifu.lighthand": "Lighthand",
   "enchantment.sifu.lumberjack": "Lumberjack",
   "enchantment.sifu.cryobsider": "Cry Obsider",
+  "enchantment.sifu.moonstep": "MoonStep",
 
   "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
   "effect.sifu.stalwart" : "Stalwart",
@@ -23,5 +24,7 @@
   "item.sifu.wardenrite_leggings" : "Wardenrite Leggings",
   "item.sifu.wardenrite_boots" : "Wardenrite Boots",
 
-  "sifu.modifytooltip.carve": "Carve Heal Amount: "
+  "sifu.modifytooltip.carve": "Carve Heal Amount: ",
+
+  "tooltip.sifu.increases_air_mobility": "Increases Air Mobility"
 }
