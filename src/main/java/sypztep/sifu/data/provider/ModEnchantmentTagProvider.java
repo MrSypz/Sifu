@@ -23,14 +23,12 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
 				.add(ModEnchantments.VEIL)
 				.add(ModEnchantments.PERCEPTION)
 				.add(Enchantments.SHARPNESS)
-				.add(Enchantments.FORTUNE);
+				.add(Enchantments.FORTUNE)
+				.add(Enchantments.FEATHER_FALLING);
 
-//		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_AUXILIARY_MOVEMENT_ENHANCEMENTS)
-//				.add(ModEnchantments.STRAFE)
-//				.add(ModEnchantments.DASH)
-//				.add(ModEnchantments.SLIDE)
-//				.add(ModEnchantments.BUOY)
-//				.add(ModEnchantments.GALE);
+		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_AUXILIARY_MOVEMENT_ENHANCEMENTS)
+				.add(ModEnchantments.MOONSTEP);
+
 		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENTS)
 				.add(ModEnchantments.VEIL)
 				.add(ModEnchantments.CRYOBSIDER);
@@ -38,8 +36,7 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
 //		getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_SPEED_ENHANCEMENTS)
 //				.add(ModEnchantments.ADRENALINE)
 //				.add(ModEnchantments.BUOY);
-//		getOrCreateTagBuilder(ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS)
-//				.add(ModEnchantments.SCOOPING);
+
 		getOrCreateTagBuilder(ConventionalEnchantmentTags.WEAPON_DAMAGE_ENHANCEMENTS)
 				.add(ModEnchantments.CARVE)
 				.add(ModEnchantments.PARRY);

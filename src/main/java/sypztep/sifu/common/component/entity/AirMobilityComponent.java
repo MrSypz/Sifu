@@ -1,9 +1,9 @@
 package sypztep.sifu.common.component.entity;
 
-import com.sypztep.common.util.EnchantmentUtil;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.hit.HitResult;
@@ -36,8 +36,8 @@ public class AirMobilityComponent implements CommonTickingComponent {
 	@Override
 	public void tick() {
 		ItemStack stack = obj.getEquippedStack(EquipmentSlot.CHEST);
-		if (ModConfig.enchantedChestplatesIncreaseAirMobility && stack.getOrDefault(ModDataComponentTypes.TOGGLEABLE_PASSIVE, true)) {
-			if (!stack.hasEnchantments()) {
+		if (ModConfig.enchantedChestplatesIncreaseAirMobility && stack.getOrDefault(ModDataComponentTypes.TOGGLEABLE_PASSIVE, false)) {
+			if (!stack.hasEnchantments() && !stack.isOf(Items.ELYTRA)) {
 				stack.remove(ModDataComponentTypes.TOGGLEABLE_PASSIVE);
 				return;
 			}
