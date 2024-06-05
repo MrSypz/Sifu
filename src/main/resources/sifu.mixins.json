@@ -4,6 +4,7 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "api.event.LivingEntityMixin",
     "cryobsider.LivingEntityMixin",
     "effect.EntityNavigationMixin",
     "effect.LivingEntityMixin",
@@ -13,6 +14,7 @@
     "lumberjack.PlayerEntityMixin",
     "parry.LivingEntityMixin",
     "util.ItemEntityAccessor",
+    "util.LivingEntityAccessor",
     "util.PersistentProjectileEntityMixin",
     "vanillatweak.crisptwing.LivingEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",

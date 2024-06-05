@@ -1,6 +1,7 @@
 package sypztep.sifu.common.util;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Ownable;
 import net.minecraft.entity.player.PlayerEntity;
 
@@ -18,5 +19,20 @@ public class LivingEntityUtil {
             return shouldHurt(attacker, ownable.getOwner());
         }
         return true;
+    }
+    public static boolean isGroundedOrAirborne(LivingEntity living, boolean allowWater) {
+        if (living instanceof PlayerEntity player && player.getAbilities().flying) {
+            return false;
+        }
+        if (!allowWater) {
+            if (living.isTouchingWater() || living.isSwimming()) {
+                return false;
+            }
+        }
+        return !living.isFallFlying() && living.getVehicle() == null && !living.isClimbing();
+    }
+
+    public static boolean isGroundedOrAirborne(LivingEntity living) {
+        return isGroundedOrAirborne(living, false);
     }
 }

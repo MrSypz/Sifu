@@ -23,6 +23,9 @@
     ],
     "cardinal-components-world": [
       "sypztep.sifu.common.init.ModWorldComponents"
+    ],
+    "cardinal-components-entity": [
+      "sypztep.sifu.common.init.ModEntityComponents"
     ]
   },
   "mixins": [
@@ -35,7 +38,9 @@
   },
   "custom": {
     "cardinal-components": [
-      "sifu:lumberjack"
+      "sifu:lumberjack",
+      "sifu:air_mobility",
+      "sifu:moonstep"
     ]
   }
 }

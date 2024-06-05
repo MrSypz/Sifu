@@ -19,6 +19,7 @@ public class ModEnchantments {
     public static final Enchantment LIGHTHAND = new NoSilkTouchEnchantment(properties(ItemTags.PICKAXES, 10, EquipmentSlot.MAINHAND));
     public static final Enchantment LUMBERJACK = new UtilityEnchantment(properties(ItemTags.AXES, 1, EquipmentSlot.MAINHAND));
     public static final Enchantment CRYOBSIDER = new CryObsiderEnchantment(properties(ItemTags.CHEST_ARMOR_ENCHANTABLE, 2, EquipmentSlot.CHEST));
+    public static final Enchantment MOONSTEP = new UtilityEnchantment(properties(ItemTags.FOOT_ARMOR_ENCHANTABLE, 5, EquipmentSlot.FEET));
 
     public static void init() {
         registry("parry",PARRY);
@@ -29,6 +30,7 @@ public class ModEnchantments {
         registry("lighthand",LIGHTHAND);
         registry("lumberjack",LUMBERJACK);
         registry("cryobsider",CRYOBSIDER);
+        registry("moonstep",MOONSTEP);
     }
     private static Enchantment.Properties properties(TagKey<Item> supportedItems, int maxLevel, EquipmentSlot... slots) {
         return Enchantment.properties(supportedItems, 5, maxLevel, Enchantment.leveledCost(5, 8), Enchantment.leveledCost(11, 6), 5, slots);

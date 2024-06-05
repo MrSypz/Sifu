@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import sypztep.sifu.common.init.ModEnchantments;
 
 @Mixin(FarmlandBlock.class)
 public class FarmlandBlockMixin {
@@ -21,7 +22,7 @@ public class FarmlandBlockMixin {
     @Inject(method = "onLandedUpon", at = @At("HEAD"), cancellable = true)
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance, CallbackInfo ci) {
         if (entity instanceof LivingEntity livingEntity) {
-            if (livingEntity instanceof PlayerEntity player && EnchantmentHelper.getLevel(Enchantments.FEATHER_FALLING,player.getEquippedStack(EquipmentSlot.FEET)) > 0) {
+            if (livingEntity instanceof PlayerEntity player && (EnchantmentHelper.getLevel(Enchantments.FEATHER_FALLING,player.getEquippedStack(EquipmentSlot.FEET)) > 0 || EnchantmentHelper.getLevel(ModEnchantments.MOONSTEP,player.getEquippedStack(EquipmentSlot.FEET)) > 0)) {
                 ci.cancel();
             }
         }

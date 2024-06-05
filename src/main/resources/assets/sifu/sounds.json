@@ -50,6 +50,15 @@
         "pitch": 1.5
       }
     ],
-    "subtitle": "subtitles.enchancement.entity.generic.wardenspine"
+    "subtitle": "subtitles.sifu.entity.generic.wardenspine"
+  },
+  "entity.generic.air_jump": {
+    "sounds": [
+      "dig/sand1",
+      "dig/sand2",
+      "dig/sand3",
+      "dig/sand4"
+    ],
+    "subtitle": "subtitles.sifu.entity.generic.air_jump"
   }
 }

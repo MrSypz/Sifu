@@ -16,9 +16,10 @@ public interface ModSoundEvents {
 	SoundEvent ITEM_STALWART = createSoundEvent("item.stalwart");
 	SoundEvent ENTITY_PARRY = createSoundEvent("entity.parry");
 	SoundEvent ENTITY_GENERIC_WARDENSPINE = createSoundEvent("entity.generic.wardenspine");
+    SoundEvent ENTITY_GENERIC_AIR_JUMP = createSoundEvent("entity.generic.air_jump");
 
 
-	static void init() {
+    static void init() {
 		SOUND_EVENTS.keySet().forEach((soundEvent) -> {
 			Registry.register(Registries.SOUND_EVENT, SOUND_EVENTS.get(soundEvent), soundEvent);
 		});
