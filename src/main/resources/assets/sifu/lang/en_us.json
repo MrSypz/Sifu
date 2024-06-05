@@ -11,13 +11,17 @@
   "enchantment.sifu.veil.desc": "More harder to detect and harder to target by monster.",
   "enchantment.sifu.lighthand": "Lighthand",
   "enchantment.sifu.lumberjack": "Lumberjack",
-  "enchantment.sifu.cryobsider": "CryObsider",
+  "enchantment.sifu.cryobsider": "Cry Obsider",
 
   "effect.sifu.stalwart_cooldown" : "Stalwart Cooldown",
   "effect.sifu.stalwart" : "Stalwart",
   "effect.sifu.carve" : "Carve",
   "effect.sifu.thousandneedle" : "Thousand Needle",
   "sifu.item.wardenrite_fragment" : "Wardenrite Fragment",
+  "item.sifu.wardenrite_helmet" : "Wardenrite Helmet",
+  "item.sifu.wardenrite_chestplate" : "Wardenrite Chestplate",
+  "item.sifu.wardenrite_leggings" : "Wardenrite Leggings",
+  "item.sifu.wardenrite_boots" : "Wardenrite Boots",
 
   "sifu.modifytooltip.carve": "Carve Heal Amount: "
 }
