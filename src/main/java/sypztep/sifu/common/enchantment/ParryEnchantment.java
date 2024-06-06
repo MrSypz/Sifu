@@ -1,5 +1,6 @@
 package sypztep.sifu.common.enchantment;
 
+import com.sypztep.common.util.EnchantmentUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -47,7 +48,7 @@ public class ParryEnchantment extends SpecialEnchantment {
 
     @Override // max 9 sec
     public int maxUseTime(ItemStack stack) {
-        return 60 + 40 * getMaxLevel();
+        return EnchantmentUtil.hasEnchantment(ModEnchantments.RIPOSTE,stack) ? 10 * getMaxLevel() : 60 + 40 * getMaxLevel();
     }
 
     @Override

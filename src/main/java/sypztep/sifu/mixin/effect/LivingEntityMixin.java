@@ -52,7 +52,7 @@ public abstract class LivingEntityMixin extends Entity {
     @ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
     private float multiplyDamageForVulnerability(float amount) {
         if (this.hasStatusEffect(ModStatusEffects.STUN)) {
-            return amount + (amount * (0.50f * (Objects.requireNonNull(this.getStatusEffect(ModStatusEffects.STUN)).getAmplifier() + 1)));
+            return amount + (amount * (0.25f * (Objects.requireNonNull(this.getStatusEffect(ModStatusEffects.STUN)).getAmplifier() + 1))); //25% per amp
         }
         return amount;
     }
