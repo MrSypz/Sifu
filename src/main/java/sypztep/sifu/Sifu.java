@@ -17,6 +17,7 @@ import sypztep.sifu.common.event.LightHandEvent;
 import sypztep.sifu.common.event.LumberjackEvent;
 import sypztep.sifu.common.init.*;
 import sypztep.sifu.common.payload.CarveSoulPayload;
+import sypztep.sifu.common.payload.DefendMeterPayload;
 import sypztep.sifu.common.payload.MoonStepPayload;
 import sypztep.sifu.common.reload.LightHandBaseBlockReloadListener;
 
@@ -50,8 +51,10 @@ public class Sifu implements ModInitializer {
 
         PayloadTypeRegistry.playC2S().register(CarveSoulPayload.ID, CarveSoulPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(MoonStepPayload.ID, MoonStepPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(DefendMeterPayload.ID, DefendMeterPayload.CODEC);
 
         ServerPlayNetworking.registerGlobalReceiver(CarveSoulPayload.ID, new CarveSoulPayload.Receiver());
         ServerPlayNetworking.registerGlobalReceiver(MoonStepPayload.ID, new MoonStepPayload.Receiver());
+        ServerPlayNetworking.registerGlobalReceiver(DefendMeterPayload.ID, new DefendMeterPayload.Receiver());
     }
 }

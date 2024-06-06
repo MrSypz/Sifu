@@ -45,9 +45,9 @@ public class ParryEnchantment extends SpecialEnchantment {
         }
     }
 
-    @Override
+    @Override // max 9 sec
     public int maxUseTime(ItemStack stack) {
-        return 15 + 5 * getMaxLevel();
+        return 60 + 40 * getMaxLevel();
     }
 
     @Override
