@@ -1,4 +1,4 @@
-package sypztep.sifu.mixin.effect;
+package sypztep.sifu.mixin.effect.stun;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
