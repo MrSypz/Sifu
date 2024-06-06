@@ -14,7 +14,6 @@ public class ModEnchantments {
     //SWORD
     public static final Enchantment PARRY = new ParryEnchantment(properties(ItemTags.SWORDS,3,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND));
     public static final Enchantment RIPOSTE = new Enchantment(properties(ItemTags.SWORDS,5,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND));
-    public static final Enchantment DEFLECT = new Enchantment(properties(ItemTags.SWORDS,3,EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND));
     public static final Enchantment CARVE = new CarveEnchantment(properties(ItemTags.SWORDS,5,EquipmentSlot.MAINHAND));
     //HOE
     public static final Enchantment THOUSAND_NEEDLE = new ThousandNeedleEnchantment(properties(ItemTags.HOES,3,EquipmentSlot.MAINHAND));
@@ -41,7 +40,6 @@ public class ModEnchantments {
         registry("cryobsider",CRYOBSIDER);
         registry("moonstep",MOONSTEP);
         registry("riposte",RIPOSTE);
-        registry("deflect",DEFLECT);
     }
     private static Enchantment.Properties properties(TagKey<Item> supportedItems, int maxLevel, EquipmentSlot... slots) {
         return Enchantment.properties(supportedItems, 5, maxLevel, Enchantment.leveledCost(5, 8), Enchantment.leveledCost(11, 6), 5, slots);
