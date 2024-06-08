@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import sypztep.sifu.common.init.ModEnchantments;
 import sypztep.sifu.common.init.ModItems;
+import sypztep.sifu.common.item.WardenriteWarfan;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {

@@ -6,7 +6,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -17,13 +16,13 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import org.joml.Vector3f;
 import sypztep.sifu.common.entity.projectile.ShadowShardsEntity;
 import sypztep.sifu.common.util.RaytraceUtil;
 
 import java.util.List;
 
 public class WardenriteWarfan extends Warfan {
+    public static Entity GlowEntity = null;
     public WardenriteWarfan(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
     }
@@ -39,6 +38,7 @@ public class WardenriteWarfan extends Warfan {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         LivingEntity target = RaytraceUtil.raytraceForAimlock(user);
+        GlowEntity = target;
         if (world.isClient()) {
             if (target != null) {
                 for (int i = 0; i < 12; i++) {
@@ -49,17 +49,20 @@ public class WardenriteWarfan extends Warfan {
                     world.addParticle(ParticleTypes.SCULK_SOUL, vec3d.getX(), vec3d.getY(), vec3d.getZ(), 0.0, 0.0, 0.0);
                 }
             }
-            return TypedActionResult.consume(user.getActiveItem());
         }
         if (!world.isClient()) {
             for (int i = 0; i < 9; i++) {
                 ShadowShardsEntity shardsEntity = spawnShadowShards(world, user, i,target);
                 world.spawnEntity(shardsEntity);
             }
-            user.getItemCooldownManager().set(user.getActiveItem().getItem(),100);
-            return TypedActionResult.consume(user.getMainHandStack());
+            user.getItemCooldownManager().set(user.getStackInHand(hand).getItem(),100);
         }
-        return TypedActionResult.pass(user.getActiveItem());
+        return TypedActionResult.success(user.getStackInHand(hand));
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.SPYGLASS;
     }
 
     @NotNull
