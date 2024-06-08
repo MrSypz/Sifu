@@ -5,6 +5,11 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.CrossbowItem;
+import net.minecraft.item.Items;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -16,6 +21,7 @@ import sypztep.sifu.common.event.EnchantedChestplateAirMobilityEvent;
 import sypztep.sifu.common.event.LightHandEvent;
 import sypztep.sifu.common.event.LumberjackEvent;
 import sypztep.sifu.common.init.*;
+import sypztep.sifu.common.item.WardenriteWarfan;
 import sypztep.sifu.common.payload.CarveSoulPayload;
 import sypztep.sifu.common.payload.MoonStepPayload;
 import sypztep.sifu.common.reload.LightHandBaseBlockReloadListener;
@@ -36,6 +42,7 @@ public class Sifu implements ModInitializer {
         ModEntityTypes.init();
         ModLootableModify.init();
         ModItems.init();
+        ModItemGroups.init();
         initPayloads();
 
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new LightHandBaseBlockReloadListener());

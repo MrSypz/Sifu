@@ -44,7 +44,7 @@ public class ThousandNeedleEnchantment extends SpecialEnchantment implements Enc
             return;
         if (!world.isClient()) {
             for (int i = 0; i < Math.pow(3, amp); i++) {
-                NeedleEntity needleEntity = new NeedleEntity(world, user);
+                NeedleEntity needleEntity = new NeedleEntity(world, user,0.55f);
                 needleEntity.setOwner(user);
                 needleEntity.setPosition(user.getX(), user.getEyeY() + 2, user.getZ());
 

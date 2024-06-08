@@ -27,9 +27,10 @@ public class NeedleEntity extends PersistentProjectileEntity {
 	public NeedleEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
 		super(entityType, world);
 	}
-
-	public NeedleEntity(World world, LivingEntity owner) {
+	private float damage = 0;
+	public NeedleEntity(World world, LivingEntity owner, float damage) {
 		super(ModEntityTypes.NEEDLE, owner, world, ItemStack.EMPTY);
+		this.damage = damage;
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class NeedleEntity extends PersistentProjectileEntity {
 				entity = part.owner;
 			}
 			Entity owner = getOwner();
-			if (LivingEntityUtil.shouldHurt(owner, entity) && entity.damage(ModDamageTypes.create(getWorld(), ModDamageTypes.NEEDLE, this, owner), 6)) {
+			if (LivingEntityUtil.shouldHurt(owner, entity) && entity.damage(ModDamageTypes.create(getWorld(), ModDamageTypes.NEEDLE, this, owner), this.damage)) {
 				playSound(getHitSound(), 1, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
 				addParticles();
 				discard();

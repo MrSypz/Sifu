@@ -17,6 +17,7 @@
     "util.ItemEntityAccessor",
     "util.LivingEntityAccessor",
     "util.PersistentProjectileEntityMixin",
+    "util.PlayerEntityMixin",
     "util.toggleablepassive.ItemStackMixin",
     "vanillatweak.crisptwing.LivingEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",

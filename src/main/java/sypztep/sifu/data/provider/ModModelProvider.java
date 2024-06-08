@@ -26,5 +26,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem) ModItems.WARDENRITE_BOOTS);
 
         itemModelGenerator.register(ModItems.WARDENRITE_FRAGMENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WARDENRITE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
     }
 }

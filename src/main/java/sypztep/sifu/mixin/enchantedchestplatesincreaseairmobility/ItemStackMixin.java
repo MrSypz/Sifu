@@ -3,11 +3,13 @@ package sypztep.sifu.mixin.enchantedchestplatesincreaseairmobility;
 import net.minecraft.component.ComponentHolder;
 import net.minecraft.component.DataComponentType;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import sypztep.sifu.ModConfig;
 import sypztep.sifu.common.init.ModDataComponentTypes;
+import sypztep.sifu.common.init.ModItems;
 import sypztep.sifu.common.tag.ModEnchantmentTags;
 
 @Mixin(ItemStack.class)
@@ -30,10 +33,18 @@ public abstract class ItemStackMixin implements ComponentHolder {
 	@Nullable
 	public abstract <T> T set(DataComponentType<? super T> type, @Nullable T value);
 
+	@Shadow public abstract boolean isOf(Item item);
+
 	@Inject(method = "addEnchantment", at = @At("TAIL"))
 	private void enchantedChestplatesIncreaseAirMobility(Enchantment enchantment, int level, CallbackInfo ci) {
 		if (ModConfig.enchantedChestplatesIncreaseAirMobility && hasEnchantments() && isIn(ItemTags.CHEST_ARMOR_ENCHANTABLE) && !Registries.ENCHANTMENT.getEntry(enchantment).isIn(ModEnchantmentTags.DISALLOWS_TOGGLEABLE_PASSIVE) && !contains(ModDataComponentTypes.TOGGLEABLE_PASSIVE)) {
 			set(ModDataComponentTypes.TOGGLEABLE_PASSIVE, true);
+		}
+	}
+	@Inject(method = "onCraftByPlayer", at = @At("TAIL"))
+	private void flipflop(World world, PlayerEntity player, int amount, CallbackInfo ci) {
+		if (!contains(ModDataComponentTypes.TOGGLEABLE_PASSIVE) && isOf(ModItems.WARDENRITE_WARFAN)) {
+			set(ModDataComponentTypes.TOGGLEABLE_FAN, false);
 		}
 	}
 }
