@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import sypztep.sifu.common.init.ModEnchantments;
+import sypztep.sifu.common.init.ModItems;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {

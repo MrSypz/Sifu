@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -18,6 +19,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.EmptyBlockView;
 import net.minecraft.world.World;
 import sypztep.sifu.common.init.ModDamageTypes;
 import sypztep.sifu.common.init.ModEntityTypes;
@@ -29,15 +31,17 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
     private static final ParticleEffect PARTICLE = new ItemStackParticleEffect(ParticleTypes.ITEM, Items.SCULK_CATALYST.getDefaultStack());
     private final int upwardMovementDuration; // Duration to move upwards
     private float damage = 0;
+    private LivingEntity target = null;
     public ShadowShardsEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
         super(entityType, world);
         this.upwardMovementDuration = 40; // Move up for 2 seconds (40 ticks)
     }
 
-    public ShadowShardsEntity(World world, LivingEntity owner,float damage) {
+    public ShadowShardsEntity(World world, LivingEntity owner, float damage, LivingEntity target) {
         super(ModEntityTypes.SHADOW_SHARDS, owner, world, ItemStack.EMPTY);
         this.upwardMovementDuration = 40; // Move up for 2 seconds (40 ticks)
         this.damage = damage;
+        this.target = target;
     }
     @Override
     protected ItemStack getDefaultItemStack() {
@@ -93,15 +97,18 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
             setNoGravity(true);
             setVelocity(0, 0, 0);
         } else if (!this.inGround && this.isAlive() && !getWorld().isClient()) {
-            double speed = this.getVelocity().length();
-            Entity target = findNearestTarget();
-            if (target != null) {
-                Vec3d toTarget = target.getPos().add(0.0, 0.5, 0.0).subtract(this.getPos());
+            if (this.target == null || !this.target.isAlive()) {
+                this.target = findNearestTarget();
+            }
+
+            if (this.target != null) {
+                double speed = this.getVelocity().length();
+                Vec3d toTarget = this.target.getPos().add(0.0, 0.5, 0.0).subtract(this.getPos());
                 Vec3d dirVelocity = this.getVelocity().normalize();
                 Vec3d dirToTarget = toTarget.normalize();
                 double dotProduct = dirVelocity.dotProduct(dirToTarget);
 
-                // Ensure dotProduct is within [-1, 1] range to avoid NaN and if not add this this will start bruh and disapear and keep spam log eror
+                // Ensure dotProduct is within [-1, 1] range to avoid NaN
                 if (dotProduct >= -1 && dotProduct <= 1) {
                     double angle = Math.acos(dotProduct);
                     double newSpeed = 0.9 * speed + 0.1399999999999;
@@ -110,36 +117,37 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
                         newVelocity = dirVelocity.multiply(newSpeed);
                     } else {
                         Vec3d newDir = dirVelocity.multiply((angle - 0.12) / angle).add(dirToTarget.multiply(0.12 / angle));
-                        newDir.normalize();
+                        newDir = newDir.normalize();
                         newVelocity = newDir.multiply(newSpeed);
                     }
                     this.setVelocity(newVelocity);
                 }
             }
             this.addTailParticle();
-        }
-        else if (age > 600 && !getWorld().isClient) {
+        } else if (age > 600 && !getWorld().isClient) {
             discard();
         }
     }
-    @Override
-    protected float getDragInWater() {
-        return 0.9f;
-    }
-
-    private Entity findNearestTarget() {
+    private LivingEntity findNearestTarget() {
         double nearestDistance = Double.MAX_VALUE;
-        Entity nearestEntity = null;
+        LivingEntity nearestEntity = null;
 
-        for (Entity entity : getWorld().getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(32))) {
-            if (entity instanceof LivingEntity && entity != this.getOwner() && entity != this && entity.isAlive()) {
-                double distance = entity.squaredDistanceTo(this);
+        for (LivingEntity livingEntities : getWorld().getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(32))) {
+            if (livingEntities != this.getOwner() && livingEntities.isAlive() && !livingEntities.isInvisible()) {
+                if (livingEntities instanceof TameableEntity tameable && tameable.getOwner() == this.getOwner()) {
+                    continue; //skip if target is pet
+                }
+                double distance = livingEntities.squaredDistanceTo(this);
                 if (distance < nearestDistance) {
                     nearestDistance = distance;
-                    nearestEntity = entity;
+                    nearestEntity = livingEntities;
                 }
             }
         }
         return nearestEntity;
+    }
+    @Override
+    protected float getDragInWater() {
+        return 0.9f;
     }
 }
