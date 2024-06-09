@@ -9,7 +9,6 @@ import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particle.EntityEffectParticleEffect;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -19,13 +18,10 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.EmptyBlockView;
 import net.minecraft.world.World;
 import sypztep.sifu.common.init.ModDamageTypes;
 import sypztep.sifu.common.init.ModEntityTypes;
 import sypztep.sifu.common.util.LivingEntityUtil;
-
-import java.util.Vector;
 
 public class ShadowShardsEntity extends PersistentProjectileEntity {
     private static final ParticleEffect PARTICLE = new ItemStackParticleEffect(ParticleTypes.ITEM, Items.SCULK_CATALYST.getDefaultStack());
@@ -74,23 +70,23 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
         BlockState state = getWorld().getBlockState(blockHitResult.getBlockPos());
         state.onProjectileHit(getWorld(), state, blockHitResult, this);
         if (!getWorld().isClient) {
-            playSound(getHitSound(), 1, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
+            playSound(getHitSound(), 2, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
             addParticles();
             discard();
         }
-    }
-    private void addTailParticle() {
-        getWorld().addParticle(ParticleTypes.SCULK_SOUL,true,this.getX(),this.getY(),this.getZ(),0,0,0);
     }
 
     public void addParticles() {
         ((ServerWorld) getWorld()).spawnParticles(PARTICLE, getX(), getY(), getZ(), 8, getWidth() / 2, getHeight() / 2, getWidth() / 2, 0);
     }
 
+
     @Override
     public void tick() {
         super.tick();
         this.age++; // Increment age each tick
+        this.getWorld().addParticle(ParticleTypes.SCULK_SOUL,this.getX(), this.getY(), this.getZ(), this.getVelocity().getX(), this.getVelocity().getY(), this.getVelocity().getZ());
+
         if (this.age < upwardMovementDuration) {
             setVelocity(0, 0.125, 0);
         } else if (this.age < 80 && !getWorld().isClient) { // 2 more seconds for hovering
@@ -103,7 +99,7 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
 
             if (this.target != null) {
                 double speed = this.getVelocity().length();
-                Vec3d toTarget = this.target.getPos().add(0.0, 0.5, 0.0).subtract(this.getPos());
+                Vec3d toTarget = this.target.getPos().add(0.0, 0.7, 0.0).subtract(this.getPos());
                 Vec3d dirVelocity = this.getVelocity().normalize();
                 Vec3d dirToTarget = toTarget.normalize();
                 double dotProduct = dirVelocity.dotProduct(dirToTarget);
@@ -123,7 +119,6 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
                     this.setVelocity(newVelocity);
                 }
             }
-            this.addTailParticle();
         } else if (age > 600 && !getWorld().isClient) {
             discard();
         }
@@ -148,6 +143,6 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
     }
     @Override
     protected float getDragInWater() {
-        return 0.9f;
+        return 0.99f;
     }
 }

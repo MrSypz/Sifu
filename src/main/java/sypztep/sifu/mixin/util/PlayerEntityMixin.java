@@ -44,7 +44,7 @@ public abstract class PlayerEntityMixin extends LivingEntity{
     }
 
     @ModifyArg(method = "spawnSweepAttackParticles",at = @At(value = "INVOKE",target = "Lnet/minecraft/server/world/ServerWorld;spawnParticles(Lnet/minecraft/particle/ParticleEffect;DDDIDDDD)I"))
-    private <T extends ParticleEffect> T mamy$disableSweepingattack(T value) {
+    private <T extends ParticleEffect> T disableSweepingattack(T value) {
         Item item = this.getMainHandStack().getItem();
         if (item instanceof CustomHitParticleItem) {
             return null;
