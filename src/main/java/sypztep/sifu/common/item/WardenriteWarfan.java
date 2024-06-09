@@ -33,10 +33,12 @@ public class WardenriteWarfan extends Warfan {
     private static final int PARTICLE_COUNT = 12;
     private static final int SHARD_COUNT = 9;
     private final ItemDescriptionHandler descriptionHandler = new ItemDescriptionHandler();
+
     public WardenriteWarfan(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings);
         setupDescriptions();
     }
+
     private void setupDescriptions() {
         descriptionHandler.addDescription("This item provides a passive effect.", ItemDescriptionHandler.DescriptionType.PASSIVE);
         descriptionHandler.addDescription("This item triggers a special effect on hit.", ItemDescriptionHandler.DescriptionType.ON_HIT);
@@ -58,7 +60,7 @@ public class WardenriteWarfan extends Warfan {
             tooltip.addAll(descriptionHandler.getDescriptions());
         } else {
             tooltip.add(Text.literal("Press Shift for detail").formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
-            tooltip.add(Text.literal("Soul Collector: ").formatted(Formatting.BLUE)
+            tooltip.add(Text.literal("Soul Collector: ").formatted(Formatting.YELLOW)
                     .append(Text.literal(String.valueOf(soulCount)).formatted(Formatting.RED))
                     .formatted(Formatting.ITALIC));
         }
@@ -78,19 +80,20 @@ public class WardenriteWarfan extends Warfan {
 
         if (world.isClient()) {
             spawnParticles(world, target);
-            user.playSound(SoundEvents.ENTITY_WARDEN_DIG,0.4f,1.5f);
+            user.playSound(SoundEvents.ENTITY_WARDEN_DIG, 0.4f, 1.5f);
         } else {
             spawnShards(world, user, target);
             user.getItemCooldownManager().set(stack.getItem(), 10);
             decreaseSoulPoints(stack, 1);
-            stack.damage(1,user , LivingEntity.getSlotForHand(hand));
+            stack.damage(1, user, LivingEntity.getSlotForHand(hand));
         }
 
         return TypedActionResult.success(stack);
     }
+
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker.distanceTo(target) < 4.5 && target.isDead() && target.deathTime < 40) {
+        if (attacker.distanceTo(target) <= 7.5 && target.isDead() && target.deathTime < 40) {
             addSoulPoints(stack, 1);
         }
         return super.postHit(stack, target, attacker);
