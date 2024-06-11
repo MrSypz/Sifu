@@ -18,6 +18,14 @@ public class ModItemGroups {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
             content.addAfter(Items.DISC_FRAGMENT_5, ModItems.WARDENRITE_FRAGMENT);
             content.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.WARDENRITE_UPGRADE_SMITHING_TEMPLATE);
+            content.addAfter(Items.NETHERITE_INGOT, ModItems.WARDENRITE_INGOT);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
+            content.addAfter(Items.NETHERITE_HOE, ModItems.WARDENRITE_SHOVEL);
+            content.addAfter(ModItems.WARDENRITE_SHOVEL, ModItems.WARDENRITE_PICKAXE);
+            content.addAfter(ModItems.WARDENRITE_PICKAXE, ModItems.WARDENRITE_AXE);
+            content.addAfter(ModItems.WARDENRITE_AXE, ModItems.WARDENRITE_HOE);
         });
     }
 }

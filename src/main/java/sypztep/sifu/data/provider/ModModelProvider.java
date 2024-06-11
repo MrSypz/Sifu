@@ -25,7 +25,14 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor((ArmorItem) ModItems.WARDENRITE_LEGGINGS);
         itemModelGenerator.registerArmor((ArmorItem) ModItems.WARDENRITE_BOOTS);
 
+        itemModelGenerator.register(ModItems.WARDENRITE_SHOVEL, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.WARDENRITE_PICKAXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.WARDENRITE_AXE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.WARDENRITE_HOE, Models.HANDHELD);
+
         itemModelGenerator.register(ModItems.WARDENRITE_FRAGMENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WARDENRITE_INGOT, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.WARDENRITE_UPGRADE_SMITHING_TEMPLATE, Models.GENERATED);
     }
 }
