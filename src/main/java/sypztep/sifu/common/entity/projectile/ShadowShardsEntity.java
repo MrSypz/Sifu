@@ -112,7 +112,7 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
                     if (angle < 0.12) {
                         newVelocity = dirVelocity.multiply(newSpeed);
                     } else {
-                        Vec3d newDir = dirVelocity.multiply((angle - 0.12) / angle).add(dirToTarget.multiply(0.12 / angle));
+                        Vec3d newDir = dirVelocity.multiply((angle - 0.16) / angle).add(dirToTarget.multiply(0.16 / angle));
                         newDir = newDir.normalize();
                         newVelocity = newDir.multiply(newSpeed);
                     }

@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -66,20 +65,18 @@ public class WardenriteWarfan extends Warfan {
                     .formatted(Formatting.ITALIC));
         }
     }
-
     @Override
     public void onCraftByPlayer(ItemStack stack, World world, PlayerEntity player) {
         stack.apply(DataComponentTypes.CUSTOM_DATA, NbtComponent.DEFAULT, comp -> comp.apply(itemnbt -> itemnbt.putInt(SOUL_KEY, 0)));
         super.onCraftByPlayer(stack, world, player);
     }
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
         NbtCompound nbt = getNbtCompound(stack);
 
         if (nbt.getInt(SOUL_KEY) <= 0) {
-            return TypedActionResult.pass(stack);
+            return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
         LivingEntity target = RaytraceUtil.raytraceForAimlock(user);
@@ -94,7 +91,7 @@ public class WardenriteWarfan extends Warfan {
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
         }
 
-        return TypedActionResult.success(stack);
+        return TypedActionResult.success(user.getStackInHand(hand));
     }
 
     @Override
