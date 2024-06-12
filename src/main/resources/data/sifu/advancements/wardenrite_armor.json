@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:story/enter_the_end",
+  "criteria": {
+    "wardenrite_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "sifu:wardenrite_helmet"
+          },
+          {
+            "items": "sifu:wardenrite_chestplate"
+          },
+          {
+            "items": "sifu:wardenrite_leggings"
+          },
+          {
+            "items": "sifu:wardenrite_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nether.wardenrite_armor.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "sifu:wardenrite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.nether.wardenrite_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "wardenrite_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

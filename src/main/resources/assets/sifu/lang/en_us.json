@@ -1,4 +1,6 @@
 {
+  "advancements.nether.wardenrite_armor.description": "Cover with Full Wardenrite armor",
+  "advancements.nether.wardenrite_armor.title": "Step close to immortality",
   "enchantment.sifu.carve" : "Carve",
   "enchantment.sifu.carve.desc": "Reduces the target's protection with each attack. After attacking for a while, Right-clicking can trigger a healing effect.",
   "enchantment.sifu.parry": "Parry",
