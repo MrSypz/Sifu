@@ -25,7 +25,9 @@
 
   "item.sifu.wardenrite_upgrade_smithing_template" : "Wardenrite Template",
   "item.sifu.smithing_template.wardenrite_upgrade.applies_to" : "Netherite Equipment",
-  "item.sifu.smithing_template.wardenrite_upgrade.ingredients" : "Wardenrite Fragment",
+  "item.sifu.smithing_template.wardenrite_upgrade.ingredients" : "Wardenrite Ingot",
+  "item.sifu.smithing_template.wardenrite_upgrade.base_slot_description" : "Request a Netherite Armor",
+  "item.sifu.smithing_template.wardenrite_upgrade.additions_slot_description" : "Request a Wardenrite Ingot",
 
   "item.sifu.wardenrite_fragment" : "Wardenrite Fragment",
   "item.sifu.wardenrite_ingot" : "Wardenrite Ingot",

@@ -67,10 +67,14 @@ public class ModItems {
         return List.of(new Identifier("item/empty_armor_slot_helmet"),
                 new Identifier("item/empty_armor_slot_chestplate"),
                 new Identifier("item/empty_armor_slot_leggings"),
-                new Identifier("item/empty_armor_slot_boots"));
+                new Identifier("item/empty_armor_slot_boots"),
+                new Identifier("item/empty_slot_pickaxe"),
+                new Identifier("item/empty_slot_axe"),
+                new Identifier("item/empty_slot_shovel"),
+                new Identifier("item/empty_slot_hoe"));
     }
 
     private static List<Identifier> getWardenriteAdditionsSlotTextures() {
-        return List.of(new Identifier(Sifu.MODID, "item/empty_slot_wardenrite_fragment"));
+        return List.of(new Identifier(Sifu.MODID, "item/empty_slot_wardenrite_ingot"));
     }
 }

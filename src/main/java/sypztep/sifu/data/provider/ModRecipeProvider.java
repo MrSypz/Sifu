@@ -46,6 +46,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.WARDENRITE_CHESTPLATE);
         offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.WARDENRITE_LEGGINGS);
         offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.WARDENRITE_BOOTS);
+        offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ModItems.WARDENRITE_PICKAXE);
+        offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.WARDENRITE_SHOVEL);
+        offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.WARDENRITE_HOE);
+        offerWardenriteUpgradeRecipe(exporter, Items.NETHERITE_AXE, RecipeCategory.TOOLS, ModItems.WARDENRITE_AXE);
     }
     public static void offerWardenriteUpgradeRecipe(RecipeExporter exporter, Item input, RecipeCategory category, Item result) {
         SmithingTransformRecipeJsonBuilder.create(Ingredient.ofItems(ModItems.WARDENRITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.ofItems(input), Ingredient.ofItems(ModItems.WARDENRITE_INGOT), category, result)
