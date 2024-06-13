@@ -11,6 +11,7 @@ import sypztep.sifu.client.event.HealthBarRenderEvent;
 import sypztep.sifu.client.event.MoonStepRenderEvent;
 import sypztep.sifu.client.payload.AddCarveSoulParticlePayload;
 import sypztep.sifu.client.payload.AddMoonStepParticlesPayload;
+import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.client.render.ShaderRenderer;
 import sypztep.sifu.client.render.entity.NeedleEntityRenderer;
 import sypztep.sifu.client.render.entity.ShadowShardsEntityRenderer;
@@ -36,5 +37,6 @@ public class SifuClient implements ClientModInitializer {
     private void initPayloads() {
         ClientPlayNetworking.registerGlobalReceiver(AddCarveSoulParticlePayload.ID, new AddCarveSoulParticlePayload.Receiver());
         ClientPlayNetworking.registerGlobalReceiver(AddMoonStepParticlesPayload.ID, new AddMoonStepParticlesPayload.Receiver());
+        ClientPlayNetworking.registerGlobalReceiver(AddWardenriteArmorParticlesPayload.ID, new AddWardenriteArmorParticlesPayload.Receiver());
     }
 }

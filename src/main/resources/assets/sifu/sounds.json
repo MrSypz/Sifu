@@ -17,6 +17,12 @@
     ],
     "subtitle": "subtitles.sifu.entity.parry"
   },
+  "entity.stygia": {
+    "sounds": [
+      "sifu:entity/stygia"
+    ],
+    "subtitle": "subtitles.sifu.entity.stygia"
+  },
   "entity.generic.wardenspine": {
     "sounds": [
       {

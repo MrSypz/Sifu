@@ -17,6 +17,7 @@ public interface ModSoundEvents {
 	SoundEvent ENTITY_PARRY = createSoundEvent("entity.parry");
 	SoundEvent ENTITY_GENERIC_WARDENSPINE = createSoundEvent("entity.generic.wardenspine");
     SoundEvent ENTITY_GENERIC_AIR_JUMP = createSoundEvent("entity.generic.air_jump");
+	SoundEvent ENTITY_STYGIA = createSoundEvent("entity.stygia");
 
 
     static void init() {

@@ -21,7 +21,8 @@
     "util.toggleablepassive.ItemStackMixin",
     "vanillatweak.crisptwing.LivingEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
-    "veil.LivingEntityMixin"
+    "veil.LivingEntityMixin",
+    "wardenritearmor.LivingEntityMixin"
   ],
   "client": [
     "carve.client.HeldItemFeatureRendererMixin",

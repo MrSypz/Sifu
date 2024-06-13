@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import sypztep.sifu.api.event.MultiplyMovementSpeedEvent;
 import sypztep.sifu.client.payload.AddCarveSoulParticlePayload;
 import sypztep.sifu.client.payload.AddMoonStepParticlesPayload;
+import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.common.event.EnchantedChestplateAirMobilityEvent;
 import sypztep.sifu.common.event.LightHandEvent;
 import sypztep.sifu.common.event.LumberjackEvent;
@@ -24,6 +25,7 @@ import sypztep.sifu.common.init.*;
 import sypztep.sifu.common.item.WardenriteWarfan;
 import sypztep.sifu.common.payload.CarveSoulPayload;
 import sypztep.sifu.common.payload.MoonStepPayload;
+import sypztep.sifu.common.payload.WardenriteArmorPayload;
 import sypztep.sifu.common.reload.LightHandBaseBlockReloadListener;
 
 public class Sifu implements ModInitializer {
@@ -54,11 +56,15 @@ public class Sifu implements ModInitializer {
     private void initPayloads() {
         PayloadTypeRegistry.playS2C().register(AddCarveSoulParticlePayload.ID, AddCarveSoulParticlePayload.CODEC);
         PayloadTypeRegistry.playS2C().register(AddMoonStepParticlesPayload.ID, AddMoonStepParticlesPayload.CODEC);
+        PayloadTypeRegistry.playS2C().register(AddWardenriteArmorParticlesPayload.ID, AddWardenriteArmorParticlesPayload.CODEC);
 
         PayloadTypeRegistry.playC2S().register(CarveSoulPayload.ID, CarveSoulPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(MoonStepPayload.ID, MoonStepPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(WardenriteArmorPayload.ID, WardenriteArmorPayload.CODEC);
+
 
         ServerPlayNetworking.registerGlobalReceiver(CarveSoulPayload.ID, new CarveSoulPayload.Receiver());
         ServerPlayNetworking.registerGlobalReceiver(MoonStepPayload.ID, new MoonStepPayload.Receiver());
+        ServerPlayNetworking.registerGlobalReceiver(WardenriteArmorPayload.ID, new WardenriteArmorPayload.Receiver());
     }
 }

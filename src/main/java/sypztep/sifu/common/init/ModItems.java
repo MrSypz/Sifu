@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 import sypztep.sifu.Sifu;
+import sypztep.sifu.common.item.WardenriteArmor;
 import sypztep.sifu.common.item.WardenriteWarfan;
 import sypztep.sifu.common.item.Warfan;
 
@@ -35,10 +36,10 @@ public class ModItems {
         WARDENRITE_FRAGMENT = registerItem("wardenrite_fragment", new Item(new Item.Settings().maxCount(9).rarity(Rarity.EPIC)));
         WARDENRITE_INGOT = registerItem("wardenrite_ingot", new Item(new Item.Settings().maxCount(64).rarity(Rarity.EPIC).fireproof()));
 
-        WARDENRITE_HELMET = registerItem("wardenrite_helmet", new ArmorItem(ModArmorMaterials.WARDENRITE, ArmorItem.Type.HELMET, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(40)).rarity(Rarity.EPIC)));
-        WARDENRITE_CHESTPLATE = registerItem("wardenrite_chestplate", new ArmorItem(ModArmorMaterials.WARDENRITE, ArmorItem.Type.CHESTPLATE, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(40)).rarity(Rarity.EPIC)));
-        WARDENRITE_LEGGINGS = registerItem("wardenrite_leggings", new ArmorItem(ModArmorMaterials.WARDENRITE, ArmorItem.Type.LEGGINGS, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(40)).rarity(Rarity.EPIC)));
-        WARDENRITE_BOOTS = registerItem("wardenrite_boots", new ArmorItem(ModArmorMaterials.WARDENRITE, ArmorItem.Type.BOOTS, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(40)).rarity(Rarity.EPIC)));
+        WARDENRITE_HELMET = registerItem("wardenrite_helmet", new WardenriteArmor(ModArmorMaterials.WARDENRITE, ArmorItem.Type.HELMET, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(120)).rarity(Rarity.EPIC)));
+        WARDENRITE_CHESTPLATE = registerItem("wardenrite_chestplate", new WardenriteArmor(ModArmorMaterials.WARDENRITE, ArmorItem.Type.CHESTPLATE, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(120)).rarity(Rarity.EPIC)));
+        WARDENRITE_LEGGINGS = registerItem("wardenrite_leggings", new WardenriteArmor(ModArmorMaterials.WARDENRITE, ArmorItem.Type.LEGGINGS, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(120)).rarity(Rarity.EPIC)));
+        WARDENRITE_BOOTS = registerItem("wardenrite_boots", new WardenriteArmor(ModArmorMaterials.WARDENRITE, ArmorItem.Type.BOOTS, new Item.Settings().fireproof().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(120)).rarity(Rarity.EPIC)));
 
         WARDENRITE_SHOVEL = registerItem("wardenrite_shovel", new ShovelItem(ModToolMaterials.WARDENRITE, new Item.Settings().fireproof().attributeModifiers(ShovelItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 1.5f, -3.0f))));
         WARDENRITE_PICKAXE = registerItem("wardenrite_pickaxe", new PickaxeItem(ModToolMaterials.WARDENRITE, new Item.Settings().fireproof().attributeModifiers(PickaxeItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 1.0f, -2.8f))));

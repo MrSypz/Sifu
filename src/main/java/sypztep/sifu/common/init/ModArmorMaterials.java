@@ -24,7 +24,7 @@ public class ModArmorMaterials {
         map.put(ArmorItem.Type.CHESTPLATE, 10);
         map.put(ArmorItem.Type.HELMET, 5);
         map.put(ArmorItem.Type.BODY, 13);
-    }), 4, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, 0.125f, () -> Ingredient.ofItems(Items.NETHERITE_INGOT));
+    }), 4, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0f, 0.125f, () -> Ingredient.ofItems(ModItems.WARDENRITE_INGOT));
 
         private static RegistryEntry<ArmorMaterial> register(String id, EnumMap<ArmorItem.Type, Integer> defense, int enchantability, RegistryEntry<
         SoundEvent > equipSound, float toughness, float knockbackResistance, Supplier<Ingredient > repairIngredient) {
