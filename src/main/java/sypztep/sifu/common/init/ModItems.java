@@ -10,10 +10,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 import sypztep.sifu.Sifu;
-import sypztep.sifu.common.item.WardenriteSword;
-import sypztep.sifu.common.item.WardenriteArmor;
-import sypztep.sifu.common.item.WardenriteWarfan;
-import sypztep.sifu.common.item.Warfan;
+import sypztep.sifu.common.item.impl.WardenriteArmor;
+import sypztep.sifu.common.item.impl.WardenriteSword;
+import sypztep.sifu.common.item.impl.WardenriteWarfan;
 
 import java.util.List;
 import java.util.Set;
@@ -55,10 +54,10 @@ public class ModItems {
 
         WARDENRITE_UPGRADE_SMITHING_TEMPLATE = registerItem("wardenrite_upgrade_smithing_template", createWardenriteUpgradeSmithingTemplate());
 
-        WARDENRITE_WARFAN = registerCustom3DItem("wardenrite_warfan", new WardenriteWarfan(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(Warfan.createAttributeModifiers(ModToolMaterials.WARDENRITE, 2, -2)).rarity(Rarity.EPIC)));
-        WARDENRITE_SWORD = registerCustom3DItem("wardenrite_sword", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(Warfan.createAttributeModifiers(ModToolMaterials.WARDENRITE, 5, -2.4f)).rarity(Rarity.EPIC)));
-        WARDENRITE_CLEAVER = registerCustom3DItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(Warfan.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
-        WARDENRITE_SCYTHE = registerCustom3DItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(Warfan.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
+        WARDENRITE_WARFAN = registerCustom3DItem("wardenrite_warfan", new WardenriteWarfan(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 2, -2)).rarity(Rarity.EPIC)));
+        WARDENRITE_SWORD = registerCustom3DItem("wardenrite_sword", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 5, -2.4f)).rarity(Rarity.EPIC)));
+        WARDENRITE_CLEAVER = registerCustom3DItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
+        WARDENRITE_SCYTHE = registerCustom3DItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
 
     }
 

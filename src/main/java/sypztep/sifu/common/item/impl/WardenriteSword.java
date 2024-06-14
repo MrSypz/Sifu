@@ -1,4 +1,4 @@
-package sypztep.sifu.common.item;
+package sypztep.sifu.common.item.impl;
 
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;

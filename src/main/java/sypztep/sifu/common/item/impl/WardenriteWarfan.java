@@ -1,4 +1,4 @@
-package sypztep.sifu.common.item;
+package sypztep.sifu.common.item.impl;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipType;
@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.Sifu;
 import sypztep.sifu.common.entity.projectile.ShadowShardsEntity;
+import sypztep.sifu.common.item.Warfan;
 import sypztep.sifu.common.util.ItemDescriptionHandler;
 import sypztep.sifu.common.util.RaytraceUtil;
 

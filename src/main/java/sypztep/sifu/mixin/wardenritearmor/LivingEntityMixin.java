@@ -1,16 +1,10 @@
 package sypztep.sifu.mixin.wardenritearmor;
 
-import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,10 +12,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import sypztep.sifu.common.init.ModEnchantments;
 import sypztep.sifu.common.init.ModStatusEffects;
-import sypztep.sifu.common.item.WardenriteArmor;
-import sypztep.sifu.common.tag.ModEntityTypeTags;
+import sypztep.sifu.common.item.impl.WardenriteArmor;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {

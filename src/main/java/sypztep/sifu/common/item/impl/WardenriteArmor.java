@@ -1,4 +1,4 @@
-package sypztep.sifu.common.item;
+package sypztep.sifu.common.item.impl;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
