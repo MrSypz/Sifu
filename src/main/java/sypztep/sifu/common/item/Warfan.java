@@ -1,7 +1,6 @@
 package sypztep.sifu.common.item;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.component.ComponentHolder;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -11,13 +10,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sypztep.sifu.common.init.ModDataComponentTypes;
 import sypztep.sifu.common.init.ModItems;
 import sypztep.sifu.common.util.CustomHitParticleItem;
 import sypztep.sifu.common.util.CustomHitSoundItem;
@@ -26,7 +23,7 @@ import java.util.List;
 
 public abstract class Warfan
         extends ToolItem
-        implements CustomHitParticleItem, CustomHitSoundItem, ComponentHolder {
+        implements CustomHitParticleItem, CustomHitSoundItem {
     public Warfan(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings.component(DataComponentTypes.TOOL, Warfan.createToolComponent()));
     }
@@ -57,7 +54,6 @@ public abstract class Warfan
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
-
     @Override
     public void spawnHitParticles(PlayerEntity user) {
 
