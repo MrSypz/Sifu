@@ -31,12 +31,5 @@
     "minecraft": "${minecraft_version}",
     "geckolib": ">=${geckolib_version}",
     "midnightlib": ">=${midnightlib_version}"
-  },
-  "custom": {
-    "cardinal-components": [
-      "sifu:lumberjack",
-      "sifu:air_mobility",
-      "sifu:moonstep"
-    ]
   }
 }
