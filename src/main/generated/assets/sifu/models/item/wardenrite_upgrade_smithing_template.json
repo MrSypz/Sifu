@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "sifu:item/wardenrite_upgrade_smithing_template"
+  }
+}
