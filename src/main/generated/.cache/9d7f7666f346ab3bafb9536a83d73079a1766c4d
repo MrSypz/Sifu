@@ -1,4 +1,4 @@
-// 1.21	2024-06-15T01:09:21.9516039	Sifu/Model Definitions
+// 1.21	2024-06-15T05:07:45.705196	Sifu/Model Definitions
 f5cbeffe70b3a0174d2a6accf19741cd05208e9b assets\sifu\models\item\wardenrite_helmet_iron_trim.json
 0fb0a7602c217765fe3809332eb106f966dcef92 assets\sifu\models\item\wardenrite_pickaxe.json
 de75c307e1cef13738a4fa73b403b9547e14bb65 assets\sifu\models\item\wardenrite_boots_iron_trim.json
@@ -6,8 +6,8 @@ e8615e4bba285bf3fbae5a77ea75656b57817563 assets\sifu\models\item\wardenrite_legg
 1df5b83c564c3277654670856f6d35d2c87cecf2 assets\sifu\models\item\wardenrite_chestplate_iron_trim.json
 1a11b6871070a1cb0c86b4dba983bccfa84ce36d assets\sifu\models\item\wardenrite_hoe.json
 a428cb409feec96b5118f4a735e5da6faee018c6 assets\sifu\models\item\wardenrite_fragment.json
-c131a0e290d605422af960626356dfa0edd7bb25 assets\sifu\models\item\wardenrite_helmet_emerald_trim.json
 813611d99153c09dd5092e5d4757bfac01745499 assets\sifu\models\item\wardenrite_leggings_iron_trim.json
+c131a0e290d605422af960626356dfa0edd7bb25 assets\sifu\models\item\wardenrite_helmet_emerald_trim.json
 57eb5a801da9e07793d7d9fa012b12a7f7223280 assets\sifu\models\item\wardenrite_boots_netherite_trim.json
 48e58590189cdfcd60e1bf1ae563de183a2d29be assets\sifu\models\item\wardenrite_helmet_copper_trim.json
 d8db07274d247ede5475cb701eb4e6ccb9086014 assets\sifu\models\item\wardenrite_chestplate_copper_trim.json
