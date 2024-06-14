@@ -11,9 +11,6 @@ import net.minecraft.util.Identifier;
 import sypztep.sifu.common.init.ModItems;
 
 public class CustomRenderer {
-    public CustomRenderer() {
-
-    }
     public static void init() {
         for (Item item : ModItems.ALL_CUSTOM3D) {
             Identifier id = Registries.ITEM.getId(item);
@@ -27,17 +24,4 @@ public class CustomRenderer {
             }));
         }
     }
-//    @Override
-//    public void onInitializeModelLoader(Context pluginContext) {
-//        for (Warfan item : ModItems.ALL_WARFAN) {
-//            Identifier id = Registries.ITEM.getId(item);
-//
-//            CustomItemRenderer customItemRenderer = new CustomItemRenderer(id);
-//            ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(customItemRenderer);
-//            BuiltinItemRendererRegistry.INSTANCE.register(item, customItemRenderer);
-//
-//            pluginContext.addModels(new ModelIdentifier(id.getNamespace(),id.getPath() + "_gui", "inventory"));
-//            pluginContext.addModels(new ModelIdentifier(id.getNamespace(),id.getPath() + "_handheld", "inventory"));
-//        }
-//    }
 }
