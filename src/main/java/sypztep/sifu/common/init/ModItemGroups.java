@@ -8,6 +8,11 @@ public class ModItemGroups {
     public static void init() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
             content.addAfter(Items.TRIDENT, ModItems.WARDENRITE_WARFAN);
+            content.addAfter(ModItems.WARDENRITE_WARFAN, ModItems.WARDENRITE_SWORD);
+            content.addAfter(ModItems.WARDENRITE_SWORD, ModItems.WARDENRITE_CLEAVER);
+            content.addAfter(ModItems.WARDENRITE_CLEAVER, ModItems.WARDENRITE_SCYTHE);
+
+            content.addAfter(Items.NETHERITE_AXE, ModItems.WARDENRITE_AXE);
 
             content.addAfter(Items.NETHERITE_BOOTS, ModItems.WARDENRITE_HELMET);
             content.addAfter(ModItems.WARDENRITE_HELMET, ModItems.WARDENRITE_CHESTPLATE);
@@ -19,10 +24,6 @@ public class ModItemGroups {
             content.addAfter(Items.DISC_FRAGMENT_5, ModItems.WARDENRITE_FRAGMENT);
             content.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, ModItems.WARDENRITE_UPGRADE_SMITHING_TEMPLATE);
             content.addAfter(Items.NETHERITE_INGOT, ModItems.WARDENRITE_INGOT);
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> {
-            content.addAfter(ModItems.WARDENRITE_AXE, ModItems.WARDENRITE_HOE);
         });
 
             ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
