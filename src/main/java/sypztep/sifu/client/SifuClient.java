@@ -32,7 +32,6 @@ public class SifuClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntityTypes.SHADOW_SHARDS, ShadowShardsEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(ShadowShardModel.MODEL_LAYER, ShadowShardModel::getTexturedModelData);
-
         CustomRenderer.init();
     }
 
