@@ -15,6 +15,7 @@ import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.client.render.ShaderRenderer;
 import sypztep.sifu.client.render.entity.NeedleEntityRenderer;
 import sypztep.sifu.client.render.entity.ShadowShardsEntityRenderer;
+import sypztep.sifu.client.render.item.CustomRenderer;
 import sypztep.sifu.client.render.model.ShadowShardModel;
 import sypztep.sifu.common.init.ModEntityTypes;
 
@@ -32,6 +33,7 @@ public class SifuClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(ShadowShardModel.MODEL_LAYER, ShadowShardModel::getTexturedModelData);
 
+        CustomRenderer.init();
     }
 
     private void initPayloads() {
