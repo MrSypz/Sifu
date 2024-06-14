@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "item": "sifu:wardenrite_ingot"
+    },
+    "S": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "W": {
+      "item": "sifu:wardenrite_fragment"
+    }
+  },
+  "pattern": [
+    "EWE",
+    "ESE",
+    "EEE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "sifu:wardenrite_upgrade_smithing_template"
+  }
+}

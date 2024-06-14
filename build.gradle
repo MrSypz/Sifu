@@ -52,14 +52,14 @@ dependencies {
 
     modRuntimeOnly "maven.modrinth:sodium:${sodium_version}"
     modImplementation  ("maven.modrinth:midnightlib:${project.midnightlib_version}")
-    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-base:${cardinal_components_version}")
-    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-entity:${cardinal_components_version}")
-    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-world:${cardinal_components_version}")
+//    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-base:${cardinal_components_version}")
+//    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-entity:${cardinal_components_version}")
+//    modImplementation include ("org.ladysnake.cardinal-components-api:cardinal-components-world:${cardinal_components_version}")
 
     modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
-    modImplementation include('com.github.MrSypz:sypzalib:v0.1.3-beta')
-    modImplementation include('com.github.MrSypz:damned:v.1.0.2')
+//    modImplementation include('com.github.MrSypz:sypzalib:v0.1.3-beta')
+    modImplementation include('com.github.MrSypz:damned:v.1.1.0')
 
     modImplementation ("org.ladysnake:satin:${satin_version}")
 }

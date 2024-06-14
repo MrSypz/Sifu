@@ -8,6 +8,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
@@ -33,7 +34,7 @@ public class ShadowShardsEntityRenderer extends EntityRenderer<ShadowShardsEntit
 			matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch()) + 90.0f));
 			Identifier texture = getTexture(entity);
 			VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(texture));
-			this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0f, 1.0f, 1.0f, 1.0f);
+			this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, Colors.WHITE);
 			matrices.pop();
 			super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
 		}	}

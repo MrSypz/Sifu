@@ -34,7 +34,7 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
     }
 
     public ShadowShardsEntity(World world, LivingEntity owner, float damage, LivingEntity target) {
-        super(ModEntityTypes.SHADOW_SHARDS, owner, world, ItemStack.EMPTY);
+        super(ModEntityTypes.SHADOW_SHARDS, owner, world, ItemStack.EMPTY, owner.getActiveItem());
         this.upwardMovementDuration = 40; // Move up for 2 seconds (40 ticks)
         this.damage = damage;
         this.target = target;

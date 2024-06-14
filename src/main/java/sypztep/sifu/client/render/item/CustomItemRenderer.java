@@ -13,11 +13,12 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
+import sypztep.sifu.Sifu;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
-
+@Deprecated
 public class CustomItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer, SimpleSynchronousResourceReloadListener {
     private static final Set<ModelTransformationMode> inventoryModes;
     private final Identifier id;
@@ -26,7 +27,7 @@ public class CustomItemRenderer implements BuiltinItemRendererRegistry.DynamicIt
     private BakedModel inventoryModel;
     private BakedModel worldModel;
     public CustomItemRenderer(Identifier weaponId) {
-        this.id = new Identifier(weaponId.getNamespace(), weaponId.getPath() + "_renderer");
+        this.id = Identifier.of((weaponId.getNamespace() + weaponId.getPath() + "_renderer"));
         this.weaponId = weaponId;
     }
     @Override
@@ -50,6 +51,7 @@ public class CustomItemRenderer implements BuiltinItemRendererRegistry.DynamicIt
         }
     }
 
+
     @Override
     public Identifier getFabricId() {
         return this.id;
@@ -64,8 +66,8 @@ public class CustomItemRenderer implements BuiltinItemRendererRegistry.DynamicIt
     public void reload(ResourceManager manager) {
         MinecraftClient client = MinecraftClient.getInstance();
         this.itemRenderer = client.getItemRenderer();
-        this.inventoryModel = client.getBakedModelManager().getModel(new ModelIdentifier(this.weaponId.getNamespace(),this.weaponId.getPath() + "_gui", "inventory"));
-        this.worldModel = client.getBakedModelManager().getModel(new ModelIdentifier(this.weaponId.getNamespace(),this.weaponId.getPath() + "_handheld", "inventory"));
+        this.inventoryModel = client.getBakedModelManager().getModel(new ModelIdentifier(weaponId,"_gui"));
+        this.worldModel = client.getBakedModelManager().getModel(new ModelIdentifier(this.weaponId,"_handheld"));
     }
     static {
         inventoryModes = Set.of(ModelTransformationMode.GUI, ModelTransformationMode.GROUND);

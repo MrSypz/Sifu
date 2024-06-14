@@ -20,19 +20,4 @@ public class LivingEntityUtil {
         }
         return true;
     }
-    public static boolean isGroundedOrAirborne(LivingEntity living, boolean allowWater) {
-        if (living instanceof PlayerEntity player && player.getAbilities().flying) {
-            return false;
-        }
-        if (!allowWater) {
-            if (living.isTouchingWater() || living.isSwimming()) {
-                return false;
-            }
-        }
-        return !living.isFallFlying() && living.getVehicle() == null && !living.isClimbing();
-    }
-
-    public static boolean isGroundedOrAirborne(LivingEntity living) {
-        return isGroundedOrAirborne(living, false);
-    }
 }

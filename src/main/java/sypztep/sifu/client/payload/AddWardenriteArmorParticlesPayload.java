@@ -12,7 +12,7 @@ import sypztep.sifu.Sifu;
 import sypztep.sifu.common.item.impl.WardenriteArmor;
 
 public record AddWardenriteArmorParticlesPayload(int entityId) implements CustomPayload {
-	public static final Id<AddWardenriteArmorParticlesPayload> ID = CustomPayload.id(Sifu.id("add_wardenrite_armor_particles").toString());
+	public static final Id<AddWardenriteArmorParticlesPayload> ID = CustomPayload.id("add_wardenrite_armor_particles");
 	public static final PacketCodec<PacketByteBuf, AddWardenriteArmorParticlesPayload> CODEC = PacketCodec.tuple(PacketCodecs.VAR_INT, AddWardenriteArmorParticlesPayload::entityId, AddWardenriteArmorParticlesPayload::new);
 
 	@Override

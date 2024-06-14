@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:wardenrite_helmet_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wardenrite_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "sifu:wardenrite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wardenrite_fragment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:wardenrite_helmet_smithing"
+    ]
+  }
+}

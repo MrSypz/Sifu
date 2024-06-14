@@ -64,6 +64,7 @@ public class ModItems {
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Sifu.id(name), item);
     }
+
     public static <T extends Item> T registerCustom3DItem(String name, T item) {
         Registry.register(Registries.ITEM, Sifu.id(name), item);
         ALL_CUSTOM3D.add(item);
@@ -72,25 +73,25 @@ public class ModItems {
 
     private static Item createWardenriteUpgradeSmithingTemplate() {
         return new SmithingTemplateItem(
-                Text.translatable(Util.createTranslationKey("item", new Identifier(Sifu.MODID, "smithing_template.wardenrite_upgrade.applies_to"))).formatted(Formatting.BLUE),
-                Text.translatable(Util.createTranslationKey("item", new Identifier(Sifu.MODID, "smithing_template.wardenrite_upgrade.ingredients"))).formatted(Formatting.BLUE),
-                Text.translatable(Util.createTranslationKey("upgrade", new Identifier(Sifu.MODID, "wardenrite_upgrade"))).formatted(Formatting.GRAY),
-                Text.translatable(Util.createTranslationKey("item", new Identifier(Sifu.MODID, "smithing_template.wardenrite_upgrade.base_slot_description"))),
-                Text.translatable(Util.createTranslationKey("item", new Identifier(Sifu.MODID, "smithing_template.wardenrite_upgrade.additions_slot_description"))), getWardenriteBaseSlotTextures(), getWardenriteAdditionsSlotTextures());
+                Text.translatable(Util.createTranslationKey("item", Sifu.id("smithing_template.wardenrite_upgrade.applies_to"))).formatted(Formatting.BLUE),
+                Text.translatable(Util.createTranslationKey("item", Sifu.id("smithing_template.wardenrite_upgrade.ingredients"))).formatted(Formatting.BLUE),
+                Text.translatable(Util.createTranslationKey("upgrade", Sifu.id("wardenrite_upgrade"))).formatted(Formatting.GRAY),
+                Text.translatable(Util.createTranslationKey("item", Sifu.id("smithing_template.wardenrite_upgrade.base_slot_description"))),
+                Text.translatable(Util.createTranslationKey("item", Sifu.id("smithing_template.wardenrite_upgrade.additions_slot_description"))), getWardenriteBaseSlotTextures(), getWardenriteAdditionsSlotTextures());
     }
 
     private static List<Identifier> getWardenriteBaseSlotTextures() {
-        return List.of(new Identifier("item/empty_armor_slot_helmet"),
-                new Identifier("item/empty_armor_slot_chestplate"),
-                new Identifier("item/empty_armor_slot_leggings"),
-                new Identifier("item/empty_armor_slot_boots"),
-                new Identifier("item/empty_slot_pickaxe"),
-                new Identifier("item/empty_slot_axe"),
-                new Identifier("item/empty_slot_shovel"),
-                new Identifier("item/empty_slot_hoe"));
+        return List.of(Identifier.ofVanilla("item/empty_armor_slot_helmet"),
+                Identifier.ofVanilla("item/empty_armor_slot_chestplate"),
+                Identifier.ofVanilla("item/empty_armor_slot_leggings"),
+                Identifier.ofVanilla("item/empty_armor_slot_boots"),
+                Identifier.ofVanilla("item/empty_slot_pickaxe"),
+                Identifier.ofVanilla("item/empty_slot_axe"),
+                Identifier.ofVanilla("item/empty_slot_shovel"),
+                Identifier.ofVanilla("item/empty_slot_hoe"));
     }
 
     private static List<Identifier> getWardenriteAdditionsSlotTextures() {
-        return List.of(new Identifier(Sifu.MODID, "item/empty_slot_wardenrite_ingot"));
+        return List.of(Sifu.id("item/empty_slot_wardenrite_ingot"));
     }
 }

@@ -37,8 +37,9 @@ public class ShadowShardModel extends Model {
                 .uv(8, 6).cuboid(2.5F, 4.5F, -0.5F, 1.0F, 3.0F, 1.0F, new Dilation(0.0F)), ModelTransform.of(0.0F, -14.5F, 0.0F, 0.0F, 3.1416F, 0.0F));
         return TexturedModelData.of(modelData, 32, 32);
 	}
+
 	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-		shadowShard.render(matrices, vertices, light, overlay, red, green, blue, alpha);
+	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
+		shadowShard.render(matrices,vertices,light,overlay,light);
 	}
 }

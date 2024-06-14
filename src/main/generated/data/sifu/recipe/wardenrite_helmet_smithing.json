@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "sifu:wardenrite_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "result": {
+    "count": 1,
+    "id": "sifu:wardenrite_helmet"
+  },
+  "template": {
+    "item": "sifu:wardenrite_upgrade_smithing_template"
+  }
+}

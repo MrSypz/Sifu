@@ -4,38 +4,20 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "api.event.LivingEntityMixin",
-    "cryobsider.LivingEntityMixin",
     "effect.stun.EntityNavigationMixin",
     "effect.stun.LivingEntityMixin",
     "effect.stun.LookControlMixin",
     "effect.stun.MobEntityMixin",
-    "enchantedchestplatesincreaseairmobility.ItemStackMixin",
-    "lumberjack.AbstractBlockMixin",
-    "lumberjack.PlayerEntityMixin",
-    "parry.LivingEntityMixin",
     "util.ItemEntityAccessor",
-    "util.LivingEntityAccessor",
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",
-    "util.toggleablepassive.ItemStackMixin",
-    "vanillatweak.crisptwing.LivingEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
-    "veil.LivingEntityMixin",
     "wardenritearmor.LivingEntityMixin"
   ],
   "client": [
-    "carve.client.HeldItemFeatureRendererMixin",
-    "carve.client.HeldItemRendererMixin",
     "effect.stun.client.CameraMixin",
     "effect.stun.client.KeyboardMixin",
-    "effect.stun.client.MouseMixin",
-    "parry.client.HeldItemFeatureRendererMixin",
-    "parry.client.HeldItemRendererMixin",
-    "perception.client.LightmapTextureManagerMixin",
-    "perception.client.MinecraftClientMixin",
-    "util.InGameHudAccessor",
-    "veil.client.EntityRendererMixin"
+    "effect.stun.client.MouseMixin"
   ],
   "injectors": {
     "defaultRequire": 1

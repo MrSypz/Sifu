@@ -57,7 +57,7 @@ public class WardenriteArmor extends ArmorItem {
     public static int getWardenritePiecesWorn(LivingEntity player) {
         int count = 0;
         for (EquipmentSlot slot : EquipmentSlot.values())
-            if (slot.getType() == EquipmentSlot.Type.ARMOR) {
+            if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 ItemStack armorPiece = player.getEquippedStack(slot);
                 if (armorPiece.getItem() instanceof WardenriteArmor) count++;
             }

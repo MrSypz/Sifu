@@ -29,7 +29,7 @@ public class NeedleEntity extends PersistentProjectileEntity {
 	}
 	private float damage = 0;
 	public NeedleEntity(World world, LivingEntity owner, float damage) {
-		super(ModEntityTypes.NEEDLE, owner, world, ItemStack.EMPTY);
+		super(ModEntityTypes.NEEDLE, owner, world, ItemStack.EMPTY, owner.getActiveItem());
 		this.damage = damage;
 	}
 

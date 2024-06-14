@@ -20,12 +20,6 @@
     ],
     "main": [
       "sypztep.sifu.Sifu"
-    ],
-    "cardinal-components-world": [
-      "sypztep.sifu.common.init.ModWorldComponents"
-    ],
-    "cardinal-components-entity": [
-      "sypztep.sifu.common.init.ModEntityComponents"
     ]
   },
   "mixins": [

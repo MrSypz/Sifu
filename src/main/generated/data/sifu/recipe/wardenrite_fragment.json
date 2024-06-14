@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:echo_shard"
+    },
+    "E": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "Z": {
+      "item": "sifu:wardenrite_fragment"
+    }
+  },
+  "pattern": [
+    "EEE",
+    "E#Z",
+    "ZZZ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "sifu:wardenrite_ingot"
+  }
+}
