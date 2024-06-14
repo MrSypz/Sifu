@@ -8,29 +8,36 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.network.ServerPlayerEntity;
-import sypztep.sifu.Sifu;
 import sypztep.sifu.common.item.impl.WardenriteArmor;
 
-public record AddWardenriteArmorParticlesPayload(int entityId) implements CustomPayload {
-	public static final Id<AddWardenriteArmorParticlesPayload> ID = CustomPayload.id("add_wardenrite_armor_particles");
-	public static final PacketCodec<PacketByteBuf, AddWardenriteArmorParticlesPayload> CODEC = PacketCodec.tuple(PacketCodecs.VAR_INT, AddWardenriteArmorParticlesPayload::entityId, AddWardenriteArmorParticlesPayload::new);
+public record AddWardenriteArmorParticlesPayload(int entityId, int i) implements CustomPayload {
+    public static final Id<AddWardenriteArmorParticlesPayload> ID = CustomPayload.id("add_wardenrite_armor_particles");
+    public static final PacketCodec<PacketByteBuf, AddWardenriteArmorParticlesPayload> CODEC = PacketCodec.tuple(
+            PacketCodecs.VAR_INT,
+            AddWardenriteArmorParticlesPayload::entityId,
+			PacketCodecs.VAR_INT,
+			AddWardenriteArmorParticlesPayload::i,
+			AddWardenriteArmorParticlesPayload::new);
 
-	@Override
-	public Id<? extends CustomPayload> getId() {
-		return ID;
-	}
+    @Override
+    public Id<? extends CustomPayload> getId() {
+        return ID;
+    }
 
-	public static void send(ServerPlayerEntity player, int id) {
-		ServerPlayNetworking.send(player, new AddWardenriteArmorParticlesPayload(id));
-	}
+    public static void send(ServerPlayerEntity player, int id,int i) {
+        ServerPlayNetworking.send(player, new AddWardenriteArmorParticlesPayload(id, i));
+    }
 
-	public static class Receiver implements ClientPlayNetworking.PlayPayloadHandler<AddWardenriteArmorParticlesPayload> {
-		@Override
-		public void receive(AddWardenriteArmorParticlesPayload payload, ClientPlayNetworking.Context context) {
-			Entity entity = context.player().getWorld().getEntityById(payload.entityId());
-			if (entity != null) {
-				WardenriteArmor.addWardenriteStygia(entity);
-			}
-		}
-	}
+    public static class Receiver implements ClientPlayNetworking.PlayPayloadHandler<AddWardenriteArmorParticlesPayload> {
+        @Override
+        public void receive(AddWardenriteArmorParticlesPayload payload, ClientPlayNetworking.Context context) {
+            Entity entity = context.player().getWorld().getEntityById(payload.entityId());
+            if (entity != null) {
+				switch (payload.i()) {
+					case 0: WardenriteArmor.addWardenriteStygia(entity); break;
+					case 1: WardenriteArmor.addParticle(entity); break;
+				}
+            }
+        }
+    }
 }

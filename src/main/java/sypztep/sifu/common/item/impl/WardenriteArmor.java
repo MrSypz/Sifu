@@ -1,5 +1,6 @@
 package sypztep.sifu.common.item.impl;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -10,6 +11,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Hand;
@@ -28,32 +30,45 @@ public class WardenriteArmor extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient() && entity instanceof PlayerEntity player) {
+        if (entity instanceof PlayerEntity player) {
             int piecesWorn = getWardenritePiecesWorn(player);
-            if (piecesWorn == 4 && !player.hasStatusEffect(ModStatusEffects.WARDENRITE_STYGIA_COOLDOWN)) { // Full set
-                applyStatusEffect(player, piecesWorn);
-            }
-        }
+            if (!world.isClient()) {
+                if (piecesWorn == 4 && !player.hasStatusEffect(ModStatusEffects.WARDENRITE_STYGIA_COOLDOWN)) // Full set
+                    applyStatusEffect(player, piecesWorn);
 
-        super.inventoryTick(stack, world, entity, slot, selected);
+            } else {
+                if (piecesWorn == 4 && player.age % 30 == 0) {
+                    addParticle(player);
+                    WardenriteArmorPayload.send(1);
+                }
+            }
+            super.inventoryTick(stack, world, entity, slot, selected);
+        }
     }
 
-
+    public static void addParticle(Entity user) {
+        if (MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson() || user != MinecraftClient.getInstance().cameraEntity)
+            for (int i = 0; i < 6; i++) {
+                user.getWorld().addParticle(ParticleTypes.TRIAL_SPAWNER_DETECTION_OMINOUS, true, user.getParticleX(.75), user.getBodyY(.2), user.getParticleZ(.75), 0, 0, 0);
+            }
+    }
 
     @Override
     public TypedActionResult<ItemStack> equipAndSwap(Item item, World world, PlayerEntity user, Hand hand) {
         int piecesWorn = getWardenritePiecesWorn(user);
         if (piecesWorn == 3) { // Full set
             addWardenriteStygia(user);
-            WardenriteArmorPayload.send();
+            WardenriteArmorPayload.send(0);
         }
         return super.equipAndSwap(item, world, user, hand);
     }
+
     public static void addWardenriteStygia(Entity user) {
-        World world = user.getWorld();
-        world.addParticle(ModParticles.SHOCKWAVE_VERTICAL,true,user.getX(),user.getEyeY(),user.getZ(),0,0,0);
-        world.playSound(null,user.getX(),user.getY(),user.getZ(),ModSoundEvents.ENTITY_STYGIA, SoundCategory.PLAYERS,3,1.25f);
+        if (MinecraftClient.getInstance().gameRenderer.getCamera().isThirdPerson() || user != MinecraftClient.getInstance().cameraEntity)
+            user.getWorld().addParticle(ModParticles.SHOCKWAVE_VERTICAL, true, user.getX(), user.getEyeY(), user.getZ(), 0, 0, 0);
+        user.getWorld().playSound(null, user.getX(), user.getY(), user.getZ(), ModSoundEvents.ENTITY_STYGIA, SoundCategory.PLAYERS, 3, 1.25f);
     }
+
     public static int getWardenritePiecesWorn(LivingEntity player) {
         int count = 0;
         for (EquipmentSlot slot : EquipmentSlot.values())
