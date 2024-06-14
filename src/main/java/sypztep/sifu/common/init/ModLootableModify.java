@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.EnchantRandomlyLootFunction;
 import net.minecraft.loot.provider.number.BinomialLootNumberProvider;
@@ -14,6 +15,7 @@ public class ModLootableModify {
         LootTableEvents.MODIFY.register((id, tableBuilder, source) -> {
             if (source.isBuiltin()) {
                 LootPool.Builder lootPool = LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.05f));
+                LootPool.Builder lootPoolkillByPlayer = LootPool.builder().rolls(BinomialLootNumberProvider.create(1, 0.05f)).conditionally(KilledByPlayerLootCondition.builder());
                 if (LootTables.OCEAN_RUIN_WARM_ARCHAEOLOGY.equals(id)) {
                     lootPool.with(ItemEntry.builder(Items.BOOK).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.THOUSAND_NEEDLE)));
                     tableBuilder.pool(lootPool);
@@ -26,8 +28,8 @@ public class ModLootableModify {
                     lootPool.with(ItemEntry.builder(Items.BOOK).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.LUMBERJACK)));
                     tableBuilder.pool(lootPool);
                 } else if (EntityType.WARDEN.getLootTableId().equals(id)) {
-                    lootPool.with(ItemEntry.builder(ModItems.WARDENRITE_FRAGMENT));
-                    tableBuilder.pool(lootPool);
+                    lootPoolkillByPlayer.with(ItemEntry.builder(ModItems.WARDENRITE_FRAGMENT));
+                    tableBuilder.pool(lootPoolkillByPlayer);
                 } else if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
                     lootPool.with(ItemEntry.builder(Items.DIAMOND_BOOTS).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.MOONSTEP)));
                 }
