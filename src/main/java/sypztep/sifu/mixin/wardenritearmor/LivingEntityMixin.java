@@ -28,7 +28,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (WardenriteArmor.getWardenritePiecesWorn(user) == 4) {
 //				if (!this.hasStatusEffect(ModStatusEffects.WARDENRITE_STYGIA_COOLDOWN) && this.getWorld() instanceof ServerWorld)
 //					((ServerWorld) this.getWorld()).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
-            this.setStatusEffect(new StatusEffectInstance(ModStatusEffects.WARDENRITE_STYGIA_COOLDOWN, 200), null);
+            this.setStatusEffect(new StatusEffectInstance(ModStatusEffects.STYGIA_COOLDOWN, 200), null);
         }
     }
 }

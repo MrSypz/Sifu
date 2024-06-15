@@ -31,7 +31,7 @@ public abstract class PlayerEntityMixin extends LivingEntity{
         super(entityType, world);
     }
     @Inject(method = {"attack"},at = {@At(value = "INVOKE",target = "Lnet/minecraft/entity/player/PlayerEntity;getAttackCooldownProgress(F)F")})
-    private void mamy$spawnCustomHitParticlesAndPlayCustomHitSound(Entity target, CallbackInfo ci) {
+    private void spawnCustomHitParticlesAndPlayCustomHitSound(Entity target, CallbackInfo ci) {
         if (this.getAttackCooldownProgress(0.5F) > 0.9F) {
             Item item = this.getMainHandStack().getItem();
             PlayerEntity player = PlayerEntity.class.cast(this);

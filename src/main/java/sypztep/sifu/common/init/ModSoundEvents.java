@@ -12,11 +12,6 @@ import java.util.Map;
 public interface ModSoundEvents {
 	Map<SoundEvent, Identifier> SOUND_EVENTS = new LinkedHashMap<>();
 	//Sound
-	SoundEvent ITEM_CARVE = createSoundEvent("item.carve");
-	SoundEvent ITEM_STALWART = createSoundEvent("item.stalwart");
-	SoundEvent ENTITY_PARRY = createSoundEvent("entity.parry");
-	SoundEvent ENTITY_GENERIC_WARDENSPINE = createSoundEvent("entity.generic.wardenspine");
-    SoundEvent ENTITY_GENERIC_AIR_JUMP = createSoundEvent("entity.generic.air_jump");
 	SoundEvent ENTITY_STYGIA = createSoundEvent("entity.stygia");
 
 

@@ -33,7 +33,7 @@ public class WardenriteArmor extends ArmorItem {
         if (entity instanceof PlayerEntity player) {
             int piecesWorn = getWardenritePiecesWorn(player);
             if (!world.isClient()) {
-                if (piecesWorn == 4 && !player.hasStatusEffect(ModStatusEffects.WARDENRITE_STYGIA_COOLDOWN)) // Full set
+                if (piecesWorn == 4 && !player.hasStatusEffect(ModStatusEffects.STYGIA_COOLDOWN)) // Full set
                     applyStatusEffect(player, piecesWorn);
 
             } else {
