@@ -13,9 +13,5 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "client": [
-    "util.ItemRendererAccessor",
-    "util.ItemRendererMixin"
-  ]
+  }
 }

@@ -37,7 +37,7 @@ public abstract class PersistentProjectileEntityMixin extends ProjectileEntity {
 	@Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
 	private void fixModProjectileSerializationWrite(NbtCompound nbt, CallbackInfo ci) {
 		if (isDisallowed()) {
-			stack = Items.AIR.getDefaultStack();
+			stack = Items.BEDROCK.getDefaultStack();
 		}
 	}
 
