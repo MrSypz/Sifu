@@ -58,7 +58,7 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
                 entity = part.owner;
             }
             Entity owner = getOwner();
-            if (LivingEntityUtil.shouldHurt(owner, entity) && entity.damage(ModDamageTypes.create(getWorld(), ModDamageTypes.NEEDLE, this, owner), damage)) {
+            if (LivingEntityUtil.shouldHurt(owner, entity) && entity.damage(ModDamageTypes.create(getWorld(), ModDamageTypes.SHADOW_SHARD, this, owner), damage)) {
                 playSound(getHitSound(), 1, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
                 addParticles();
                 discard();

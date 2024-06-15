@@ -21,13 +21,13 @@ public class ModDamageTypeTagProvider extends FabricTagProvider<DamageType> {
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 		getOrCreateTagBuilder(DamageTypeTags.BYPASSES_COOLDOWN)
-				.addOptional(ModDamageTypes.NEEDLE);
+				.addOptional(ModDamageTypes.SHADOW_SHARD);
 		getOrCreateTagBuilder(DamageTypeTags.IS_PROJECTILE)
-				.addOptional(ModDamageTypes.NEEDLE);
+				.addOptional(ModDamageTypes.SHADOW_SHARD);
 		getOrCreateTagBuilder(DamageTypeTags.NO_IMPACT)
-				.addOptional(ModDamageTypes.NEEDLE);
+				.addOptional(ModDamageTypes.SHADOW_SHARD);
 		getOrCreateTagBuilder(DamageTypeTags.NO_KNOCKBACK)
-				.addOptional(ModDamageTypes.NEEDLE);
+				.addOptional(ModDamageTypes.SHADOW_SHARD);
 		getOrCreateTagBuilder(ModDamageTags.BYPASSES_PARRY)
 				.addOptional(DamageTypes.EXPLOSION);
 	}

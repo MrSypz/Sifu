@@ -11,6 +11,7 @@ import sypztep.sifu.Sifu;
 
 public class ModDamageTypes {
     public static final RegistryKey<DamageType> NEEDLE = createType("needle");
+    public static final RegistryKey<DamageType> SHADOW_SHARD = createType("shadowshard");
     public static RegistryKey<DamageType> createType(String name) {
         return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Sifu.id(name));
     }

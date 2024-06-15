@@ -1,7 +1,3 @@
-// Made with Blockbench 4.10.3
-// Exported for Minecraft version 1.17+ for Yarn
-// Paste this class into your mod and generate all required imports
-
 package sypztep.sifu.client.render.model;
 
 import net.minecraft.client.model.*;
@@ -38,8 +34,9 @@ public class ShadowShardModel extends Model {
         return TexturedModelData.of(modelData, 32, 32);
 	}
 
+
 	@Override
 	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
-		shadowShard.render(matrices,vertices,light,overlay,light);
+		shadowShard.render(matrices,vertices,light,overlay,color);
 	}
 }
