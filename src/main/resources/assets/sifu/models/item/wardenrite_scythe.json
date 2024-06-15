@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "item/sculk_scythe",
-		"particle": "item/sculk_scythe"
+		"0": "sifu:item/wardenrite_scythe",
+		"particle": "sifu:item/wardenrite_scythe"
 	},
 	"elements": [
 		{
