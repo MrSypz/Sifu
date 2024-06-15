@@ -12,7 +12,6 @@
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
-    "vanillatweak.mobbalance.LivingEntityMixin",
     "wardenritearmor.LivingEntityMixin"
   ],
   "client": [
