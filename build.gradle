@@ -55,8 +55,6 @@ dependencies {
     modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 
     modImplementation include('com.github.MrSypz:damned:v.1.1.0')
-
-    modImplementation ("org.ladysnake:satin:${satin_version}")
 }
 
 processResources {
