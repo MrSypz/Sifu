@@ -33,11 +33,10 @@ public abstract class LivingEntityMixin {
         if (entityType.isIn(ModEntityTypeTags.MODIFY_EXTRA)) {
             EntityAttributeInstance health = getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
             EntityAttributeInstance attack = getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            EntityAttributeInstance armor = getAttributeInstance(EntityAttributes.GENERIC_ARMOR);
-
+            assert health != null;
             health.setBaseValue(health.getBaseValue() * ModConfig.entityHealthFactor);
+            assert attack != null;
             attack.setBaseValue(attack.getBaseValue() * ModConfig.entityAttackFactor);
-            armor.setBaseValue((armor.getBaseValue() + 5) * ModConfig.entityArmorFactor);
             setHealth(getMaxHealth());
         }
     }
