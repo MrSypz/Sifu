@@ -4,7 +4,6 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "util.ItemEntityAccessor",
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
@@ -14,5 +13,9 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "util.ItemRendererAccessor",
+    "util.ItemRendererMixin"
+  ]
 }

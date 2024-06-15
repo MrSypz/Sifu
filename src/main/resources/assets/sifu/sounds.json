@@ -1,70 +1,8 @@
 {
-  "item.carve": {
-    "sounds": [
-      "sifu:item/carve"
-    ],
-    "subtitle": "subtitles.sifu.item.carve"
-  },
-  "item.stalwart": {
-    "sounds": [
-      "sifu:item/stalwart"
-    ],
-    "subtitle": "subtitles.sifu.item.stalwart"
-  },
-  "entity.parry": {
-    "sounds": [
-      "sifu:entity/parry"
-    ],
-    "subtitle": "subtitles.sifu.entity.parry"
-  },
   "entity.stygia": {
     "sounds": [
       "sifu:entity/stygia"
     ],
     "subtitle": "subtitles.sifu.entity.stygia"
-  },
-  "entity.generic.wardenspine": {
-    "sounds": [
-      {
-        "name": "block/sculk_sensor/sculk_clicking1",
-        "volume": 0.73,
-        "pitch": 1.5
-      },
-      {
-        "name": "block/sculk_sensor/sculk_clicking2",
-        "volume": 0.73,
-        "pitch": 1.5
-      },
-      {
-        "name": "block/sculk_sensor/sculk_clicking3",
-        "volume": 0.73,
-        "pitch": 1.5
-      },
-      {
-        "name": "block/sculk_sensor/sculk_clicking4",
-        "volume": 0.73,
-        "pitch": 1.5
-      },
-      {
-        "name": "block/sculk_sensor/sculk_clicking5",
-        "volume": 0.73,
-        "pitch": 1.5
-      },
-      {
-        "name": "block/sculk_sensor/sculk_clicking6",
-        "volume": 0.73,
-        "pitch": 1.5
-      }
-    ],
-    "subtitle": "subtitles.sifu.entity.generic.wardenspine"
-  },
-  "entity.generic.air_jump": {
-    "sounds": [
-      "dig/sand1",
-      "dig/sand2",
-      "dig/sand3",
-      "dig/sand4"
-    ],
-    "subtitle": "subtitles.sifu.entity.generic.air_jump"
   }
 }
