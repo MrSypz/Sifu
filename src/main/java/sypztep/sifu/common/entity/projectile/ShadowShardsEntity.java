@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -76,6 +77,11 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
         }
     }
 
+    @Override
+    protected boolean tryPickup(PlayerEntity player) {
+        return false;
+    }
+
     public void addParticles() {
         ((ServerWorld) getWorld()).spawnParticles(PARTICLE, getX(), getY(), getZ(), 8, getWidth() / 2, getHeight() / 2, getWidth() / 2, 0);
     }
@@ -119,7 +125,9 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
                     this.setVelocity(newVelocity);
                 }
             }
-        } else if (age > 600 && !getWorld().isClient) {
+        }
+        if (age >= 600 && !getWorld().isClient) {
+            addParticles();
             discard();
         }
     }

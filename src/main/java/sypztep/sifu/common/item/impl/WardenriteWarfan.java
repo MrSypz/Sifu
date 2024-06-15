@@ -78,7 +78,7 @@ public class WardenriteWarfan extends Warfan {
         ItemStack stack = user.getStackInHand(hand);
         NbtCompound nbt = getNbtCompound(stack);
 
-        if (nbt.getInt(SOUL_KEY) <= 0 && !user.isCreative()) {
+        if (nbt.getInt(SOUL_KEY) <= 0) {
             return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
@@ -91,7 +91,7 @@ public class WardenriteWarfan extends Warfan {
         } else {
             spawnShards(world, user);
             user.getItemCooldownManager().set(stack.getItem(), 10);
-//            decreaseSoulPoints(stack, 1);
+            decreaseSoulPoints(stack, 1);
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
         }
 
@@ -105,21 +105,6 @@ public class WardenriteWarfan extends Warfan {
         }
         return super.postHit(stack, target, attacker);
     }
-
-    @NotNull
-    private static ShadowShardsEntity spawnShadowShards(World world, LivingEntity user, int index, LivingEntity target) {
-        ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6, target);
-        shardsEntity.setOwner(user);
-
-        double angle = 2 * Math.PI * index / SHARD_COUNT;
-        double radius = 2.0;
-        double xOffset = radius * Math.cos(angle);
-        double zOffset = radius * Math.sin(angle);
-        shardsEntity.setPosition(user.getX() + xOffset, user.getY(), user.getZ() + zOffset);
-        return shardsEntity;
-    }
-
-
     private void targetParticle(World world, LivingEntity target) {
         if (target != null) {
             for (int i = 0; i < PARTICLE_COUNT; i++) {
@@ -132,7 +117,6 @@ public class WardenriteWarfan extends Warfan {
             }
         }
     }
-
     private void spawnShards(World world, PlayerEntity user) {
         for (int i = 0; i < SHARD_COUNT; i++) {
             ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6,null);
