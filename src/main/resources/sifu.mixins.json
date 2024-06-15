@@ -4,10 +4,6 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "effect.stun.EntityNavigationMixin",
-    "effect.stun.LivingEntityMixin",
-    "effect.stun.LookControlMixin",
-    "effect.stun.MobEntityMixin",
     "util.ItemEntityAccessor",
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",
@@ -15,11 +11,6 @@
     "vanillatweak.healthmodify.EntityAttributesMixin",
     "vanillatweak.healthmodify.MobEntityMixin",
     "wardenritearmor.LivingEntityMixin"
-  ],
-  "client": [
-    "effect.stun.client.CameraMixin",
-    "effect.stun.client.KeyboardMixin",
-    "effect.stun.client.MouseMixin"
   ],
   "injectors": {
     "defaultRequire": 1

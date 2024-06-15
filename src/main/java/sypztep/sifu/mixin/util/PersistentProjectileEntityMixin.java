@@ -43,6 +43,6 @@ public abstract class PersistentProjectileEntityMixin extends ProjectileEntity {
 
 	@Unique
 	private boolean isDisallowed() {
-		return getType() == ModEntityTypes.NEEDLE || getType() == ModEntityTypes.SHADOW_SHARDS;
+		return getType() == ModEntityTypes.NEEDLE || getType() == ModEntityTypes.SHADOW_SHARDS || getType() == ModEntityTypes.PORTALIZE;
 	}
 }

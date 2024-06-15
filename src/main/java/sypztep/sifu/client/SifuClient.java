@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.client.render.entity.NeedleEntityRenderer;
+import sypztep.sifu.client.render.entity.PortalizeEntityRenderer;
 import sypztep.sifu.client.render.entity.ShadowShardsEntityRenderer;
 import sypztep.sifu.client.render.model.ShadowShardModel;
 import sypztep.sifu.common.init.ModEntityTypes;
@@ -16,6 +17,7 @@ public class SifuClient implements ClientModInitializer {
         initPayloads();
         EntityRendererRegistry.register(ModEntityTypes.NEEDLE, NeedleEntityRenderer::new);
         EntityRendererRegistry.register(ModEntityTypes.SHADOW_SHARDS, ShadowShardsEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntityTypes.PORTALIZE, PortalizeEntityRenderer::new);
 
         EntityModelLayerRegistry.registerModelLayer(ShadowShardModel.MODEL_LAYER, ShadowShardModel::getTexturedModelData);
     }

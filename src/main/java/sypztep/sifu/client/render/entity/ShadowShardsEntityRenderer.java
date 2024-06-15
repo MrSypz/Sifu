@@ -33,14 +33,16 @@ public class ShadowShardsEntityRenderer extends EntityRenderer<ShadowShardsEntit
 			matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0f));
 			matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch()) + 90.0f));
 			Identifier texture = getTexture(entity);
-			VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(texture));
-			this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, Colors.WHITE);
+			VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderLayer.getEntityCutout(texture));
+			this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
 			matrices.pop();
 			super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);
-		}	}
+		}
+	}
 
 	@Override
 	public Identifier getTexture(ShadowShardsEntity entity) {
 		return TEXTURE;
 	}
+
 }

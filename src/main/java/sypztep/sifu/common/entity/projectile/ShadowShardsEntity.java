@@ -30,12 +30,12 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
     private LivingEntity target = null;
     public ShadowShardsEntity(EntityType<? extends PersistentProjectileEntity> entityType, World world) {
         super(entityType, world);
-        this.upwardMovementDuration = 40; // Move up for 2 seconds (40 ticks)
+        this.upwardMovementDuration = 20; // Move up for 2 seconds (40 ticks)
     }
 
     public ShadowShardsEntity(World world, LivingEntity owner, float damage, LivingEntity target) {
-        super(ModEntityTypes.SHADOW_SHARDS, owner, world, ItemStack.EMPTY, owner.getActiveItem());
-        this.upwardMovementDuration = 40; // Move up for 2 seconds (40 ticks)
+        super(ModEntityTypes.SHADOW_SHARDS, owner, world, ItemStack.EMPTY, null);
+        this.upwardMovementDuration = 20; // Move up for 2 seconds (40 ticks)
         this.damage = damage;
         this.target = target;
     }
@@ -84,12 +84,12 @@ public class ShadowShardsEntity extends PersistentProjectileEntity {
     @Override
     public void tick() {
         super.tick();
-        this.age++; // Increment age each tick
-        this.getWorld().addParticle(ParticleTypes.SCULK_SOUL,this.getX(), this.getY(), this.getZ(), this.getVelocity().getX(), this.getVelocity().getY(), this.getVelocity().getZ());
+        if (this.getWorld().isClient)
+            this.getWorld().addParticle(ParticleTypes.SCULK_SOUL,this.getX(), this.getY(), this.getZ(), this.getVelocity().getX(), this.getVelocity().getY(), this.getVelocity().getZ());
 
         if (this.age < upwardMovementDuration) {
             setVelocity(0, 0.125, 0);
-        } else if (this.age < 80 && !getWorld().isClient) { // 2 more seconds for hovering
+        } else if (this.age == 21 && !getWorld().isClient) { // 2.5 more seconds for hovering
             setNoGravity(true);
             setVelocity(0, 0, 0);
         } else if (!this.inGround && this.isAlive() && !getWorld().isClient()) {

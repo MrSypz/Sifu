@@ -4,6 +4,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.OminousItemSpawnerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
@@ -21,6 +22,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.Sifu;
+import sypztep.sifu.common.entity.projectile.PortalizeEntity;
 import sypztep.sifu.common.entity.projectile.ShadowShardsEntity;
 import sypztep.sifu.common.item.Warfan;
 import sypztep.sifu.common.util.ItemDescriptionHandler;
@@ -76,19 +78,20 @@ public class WardenriteWarfan extends Warfan {
         ItemStack stack = user.getStackInHand(hand);
         NbtCompound nbt = getNbtCompound(stack);
 
-        if (nbt.getInt(SOUL_KEY) <= 0) {
+        if (nbt.getInt(SOUL_KEY) <= 0 && !user.isCreative()) {
             return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
         LivingEntity target = RaytraceUtil.raytraceForAimlock(user);
 
         if (world.isClient()) {
-            spawnParticles(world, target);
-            user.playSound(SoundEvents.ENTITY_WARDEN_DIG, 0.4f, 1.5f);
+            targetParticle(world, target);
+            float f = (world.getRandom().nextFloat() - world.getRandom().nextFloat()) * 0.2F + 1.0F;
+            user.playSound(SoundEvents.BLOCK_TRIAL_SPAWNER_SPAWN_ITEM_BEGIN, 1f, f);
         } else {
-            spawnShards(world, user, target);
+            spawnShards(world, user);
             user.getItemCooldownManager().set(stack.getItem(), 10);
-            decreaseSoulPoints(stack, 1);
+//            decreaseSoulPoints(stack, 1);
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
         }
 
@@ -108,17 +111,16 @@ public class WardenriteWarfan extends Warfan {
         ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6, target);
         shardsEntity.setOwner(user);
 
-        // Calculate the position in a circle above the player's head
         double angle = 2 * Math.PI * index / SHARD_COUNT;
         double radius = 2.0;
         double xOffset = radius * Math.cos(angle);
         double zOffset = radius * Math.sin(angle);
         shardsEntity.setPosition(user.getX() + xOffset, user.getY(), user.getZ() + zOffset);
-
         return shardsEntity;
     }
 
-    private void spawnParticles(World world, LivingEntity target) {
+
+    private void targetParticle(World world, LivingEntity target) {
         if (target != null) {
             for (int i = 0; i < PARTICLE_COUNT; i++) {
                 Vec3d vec3d = new Vec3d(
@@ -131,10 +133,18 @@ public class WardenriteWarfan extends Warfan {
         }
     }
 
-    private void spawnShards(World world, PlayerEntity user, LivingEntity target) {
+    private void spawnShards(World world, PlayerEntity user) {
         for (int i = 0; i < SHARD_COUNT; i++) {
-            ShadowShardsEntity shardsEntity = spawnShadowShards(world, user, i, target);
-            world.spawnEntity(shardsEntity);
+            ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6,null);
+            shardsEntity.setOwner(user);
+            PortalizeEntity entity = PortalizeEntity.create(world,shardsEntity,user);
+            double angle = 2 * Math.PI * i / SHARD_COUNT;
+            double radius = 2.0;
+            double xOffset = radius * Math.cos(angle);
+            double zOffset = radius * Math.sin(angle);
+            entity.setPosition(user.getX() + xOffset, user.getY(), user.getZ() + zOffset);
+            shardsEntity.setPosition(user.getX() + xOffset, user.getY(), user.getZ() + zOffset);
+            world.spawnEntity(entity);
         }
     }
 

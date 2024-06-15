@@ -13,8 +13,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import sypztep.sifu.Sifu;
 import sypztep.sifu.common.init.ModItems;
 import sypztep.sifu.common.util.CustomHitParticleItem;
 import sypztep.sifu.common.util.CustomHitSoundItem;
@@ -24,11 +26,18 @@ import java.util.List;
 public abstract class Warfan
         extends ToolItem
         implements CustomHitParticleItem, CustomHitSoundItem {
+    public static final Identifier BASE_ATTACK_RANGE_MODIFIER_ID = Sifu.id("base_attack_range");
     public Warfan(ToolMaterial toolMaterial, Settings settings) {
         super(toolMaterial, settings.component(DataComponentTypes.TOOL, Warfan.createToolComponent()));
     }
     public static ToolComponent createToolComponent() {
         return new ToolComponent(List.of(), 1.0f, 2);
+    }
+    public static AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, int baseAttackDamage, float attackSpeed, double attackrange) {
+        return AttributeModifiersComponent.builder().add(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID, (float)baseAttackDamage + material.getAttackDamage(), EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND).add(EntityAttributes.GENERIC_ATTACK_SPEED,
+                new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, attackSpeed, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND).add(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
+                new EntityAttributeModifier(BASE_ATTACK_RANGE_MODIFIER_ID, attackrange, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND).build();
     }
 
     @Override
