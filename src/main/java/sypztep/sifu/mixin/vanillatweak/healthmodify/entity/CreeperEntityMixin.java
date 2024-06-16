@@ -21,7 +21,6 @@ public abstract class CreeperEntityMixin extends HostileEntity {
     @ModifyVariable(method = "explode", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;createExplosion(Lnet/minecraft/entity/Entity;DDDFLnet/minecraft/world/World$ExplosionSourceType;)Lnet/minecraft/world/explosion/Explosion;"), ordinal = 0, require = 0)
     private float explodeMixin(float original) {
         if (this.getWorld() instanceof ServerWorld) {
-            System.out.println(original * (float) MobAttributeModify.getDamageFactor(this));
             return original * (float) MobAttributeModify.getDamageFactor(this);
         }
         return original;
