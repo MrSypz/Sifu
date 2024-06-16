@@ -4,11 +4,20 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "util.DefaultAttributeRegistryAccess",
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
     "vanillatweak.healthmodify.EntityAttributesMixin",
     "vanillatweak.healthmodify.MobEntityMixin",
+    "vanillatweak.healthmodify.ServerWorldMixin",
+    "vanillatweak.healthmodify.entity.CreeperEntityMixin",
+    "vanillatweak.healthmodify.entity.EvokerFangsEntityMixin",
+    "vanillatweak.healthmodify.entity.FireballEntityMixin",
+    "vanillatweak.healthmodify.entity.GuardianEntityMixin",
+    "vanillatweak.healthmodify.entity.ShulkerBulletEntityMixin",
+    "vanillatweak.healthmodify.entity.WitherEntityMixin",
+    "vanillatweak.healthmodify.entity.WitherSkullEntityMixin",
     "wardenritearmor.LivingEntityMixin"
   ],
   "injectors": {
