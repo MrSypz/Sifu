@@ -9,6 +9,7 @@ import net.minecraft.entity.mob.GuardianEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import sypztep.sifu.ModConfig;
 import sypztep.sifu.api.MobAttributeModify;
 
 @Mixin(GuardianEntity.class)
@@ -20,9 +21,10 @@ public abstract class GuardianEntityMixin extends HostileEntity {
 
     @ModifyConstant(method = "damage", constant = @Constant(floatValue = 2.0f), require = 0)
     private float damageMixin(float original) {
-        if (this.getWorld() instanceof ServerWorld) {
-            return original * (float) MobAttributeModify.getDamageFactor(this);
-        }
+        if (ModConfig.enableHealthModify)
+            if (this.getWorld() instanceof ServerWorld) {
+                return original * (float) MobAttributeModify.getDamageFactor(this);
+            }
         return original;
     }
 }

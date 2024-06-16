@@ -9,6 +9,7 @@ import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 import net.minecraft.entity.projectile.WitherSkullEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import sypztep.sifu.ModConfig;
 import sypztep.sifu.api.MobAttributeModify;
 
 @Mixin(WitherSkullEntity.class)
@@ -20,9 +21,10 @@ public abstract class WitherSkullEntityMixin extends ExplosiveProjectileEntity {
 
     @ModifyConstant(method = "onEntityHit", constant = @Constant(floatValue = 8.0f), require = 0)
     private float onEntityHitMixin(float original) {
-        if (this.getWorld() instanceof ServerWorld) {
-            return original * (float) MobAttributeModify.getDamageFactor(this);
-        }
+        if (ModConfig.enableHealthModify)
+            if (this.getWorld() instanceof ServerWorld) {
+                return original * (float) MobAttributeModify.getDamageFactor(this);
+            }
         return original;
     }
 }
