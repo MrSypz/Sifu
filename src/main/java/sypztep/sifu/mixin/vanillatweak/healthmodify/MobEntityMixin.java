@@ -15,10 +15,10 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 import sypztep.sifu.api.EntityAccess;
+import sypztep.sifu.api.MobAttributeModify;
 
 @Mixin(MobEntity.class)
 public abstract class MobEntityMixin extends LivingEntity implements EntityAccess {
-
     @Unique
     private float mobHealthMultiplier = 1.0f;
 
@@ -26,6 +26,10 @@ public abstract class MobEntityMixin extends LivingEntity implements EntityAcces
         super(entityType, world);
     }
 
+    @ModifyVariable(method = "getXpToDrop", at = @At(value = "RETURN", ordinal = 0))
+    private int getXpToDropMixin(int original) {
+        return MobAttributeModify.getXpToDropAddition((MobEntity) (Object) this, (ServerWorld) this.getWorld(), original);
+    }
     @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
     private void readCustomDataFromNbtMixin(NbtCompound nbt, CallbackInfo info) {
         this.mobHealthMultiplier = nbt.getFloat("MobHealthMultiplier");
@@ -45,5 +49,4 @@ public abstract class MobEntityMixin extends LivingEntity implements EntityAcces
     public float getMobHealthMultiplier() {
         return this.mobHealthMultiplier;
     }
-
 }

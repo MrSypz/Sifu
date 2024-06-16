@@ -17,7 +17,7 @@ public abstract class ServerWorldMixin {
     @Inject(method = "spawnEntity", at = @At("HEAD"))
     private void spawnEntityMixin(Entity entity, CallbackInfoReturnable<Boolean> info) {
         if (entity instanceof MobEntity) {
-                MobAttributeModify.changeAttributes((MobEntity) entity);
+                MobAttributeModify.changeAttributes((MobEntity) entity, entity.getWorld());
         }
         if (entity instanceof PersistentProjectileEntity) {
             if (((PersistentProjectileEntity) entity).getOwner() != null && ((PersistentProjectileEntity) entity).getOwner() instanceof MobEntity)

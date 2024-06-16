@@ -25,7 +25,7 @@ public class MobAttributeModify {
     private final static Random random = new Random();
 
     // Use only on ServerWorld
-    public static void changeAttributes(MobEntity mobEntity) {
+    public static void changeAttributes(MobEntity mobEntity, World world) {
         if (!ModConfig.excludedEntity.contains(mobEntity.getType().toString().replace("entity.", "").replace(".", ":"))) {
 
             if (mobEntity.isBaby() && mobEntity instanceof PassiveEntity) {
@@ -57,16 +57,16 @@ public class MobAttributeModify {
                 mobSpeed = mobEntity.getAttributeBaseValue(EntityAttributes.GENERIC_MOVEMENT_SPEED);
 
                 if (mobHealthFactor < ModConfig.maxFactorHealth) {
-                    mobHealthFactor =  ModConfig.maxFactorHealth;
+                    mobHealthFactor = ModConfig.maxFactorHealth;
                 }
-                if (mobDamageFactor <  ModConfig.maxFactorDamage) {
-                    mobDamageFactor =  ModConfig.maxFactorDamage;
+                if (mobDamageFactor < ModConfig.maxFactorDamage) {
+                    mobDamageFactor = ModConfig.maxFactorDamage;
                 }
-                if (mobProtectionFactor <  ModConfig.maxFactorProtection) {
-                    mobProtectionFactor =  ModConfig.maxFactorProtection;
+                if (mobProtectionFactor < ModConfig.maxFactorProtection) {
+                    mobProtectionFactor = ModConfig.maxFactorProtection;
                 }
-                if (mobSpeedFactor <  ModConfig.maxFactorSpeed) {
-                    mobSpeedFactor =  ModConfig.maxFactorSpeed;
+                if (mobSpeedFactor < ModConfig.maxFactorSpeed) {
+                    mobSpeedFactor = ModConfig.maxFactorSpeed;
                 }
                 // round factor
                 mobHealthFactor = Math.round(mobHealthFactor * 100.0D) / 100.0D;
@@ -82,7 +82,7 @@ public class MobAttributeModify {
 
                 // Randomness
                 if (ModConfig.allowRandomValues) {
-                        float randomFactor = ModConfig.randomFactor / 100F;
+                    float randomFactor = ModConfig.randomFactor / 100F;
                     mobHealth = mobHealth * (1 - randomFactor + (random.nextDouble() * randomFactor * 2F));
                     mobDamage = mobDamage * (1 - randomFactor + (random.nextDouble() * randomFactor * 2F));
 
@@ -118,6 +118,7 @@ public class MobAttributeModify {
             }
         }
     }
+
     public static void changeOnlyDamageAttribute(MobEntity mobEntity, Entity entity, boolean changeMobEntityValue) {
         if (!ModConfig.excludedEntity.contains(mobEntity.getType().toString().replace("entity.", "").replace(".", ":"))) {
 
@@ -164,6 +165,16 @@ public class MobAttributeModify {
             return mobDamageFactor;
         }
         return 1.0D;
+    }
+
+    public static int getXpToDropAddition(MobEntity mobEntity, ServerWorld world, int original) {
+        float xpFactor = getMobHealthMultiplier(mobEntity);
+
+        float maxXPFactor = ModConfig.maxXPFactor;
+        if (xpFactor > maxXPFactor) {
+            xpFactor = maxXPFactor;
+        }
+        return (int) (original * xpFactor);
     }
 
     public static void setMobHealthMultiplier(MobEntity mobEntity, float multiplier) {

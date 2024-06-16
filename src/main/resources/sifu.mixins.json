@@ -10,6 +10,7 @@
     "vanillatweak.featherfallfarmland.FarmlandBlockMixin",
     "vanillatweak.healthmodify.EntityAttributesMixin",
     "vanillatweak.healthmodify.MobEntityMixin",
+    "vanillatweak.healthmodify.PassiveEntityMixin",
     "vanillatweak.healthmodify.ServerWorldMixin",
     "vanillatweak.healthmodify.entity.CreeperEntityMixin",
     "vanillatweak.healthmodify.entity.EvokerFangsEntityMixin",
