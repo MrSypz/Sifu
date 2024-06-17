@@ -4,5 +4,25 @@
       "sifu:entity/stygia"
     ],
     "subtitle": "subtitles.sifu.entity.stygia"
+  },
+  "entity.hike": {
+    "sounds": [
+      "sifu:entity/hike_0",
+      "sifu:entity/hike_1",
+      "sifu:entity/hike_2"
+    ],
+    "subtitle": "subtitles.sifu.entity.hike"
+  },
+  "entity.shot": {
+    "sounds": [
+      "sifu:entity/shot"
+    ],
+    "subtitle": "subtitles.sifu.entity.click"
+  },
+  "entity.flyhook": {
+    "sounds": [
+      "sifu:entity/flyhook"
+    ],
+    "subtitle": "subtitles.sifu.entity.flyhook"
   }
 }
