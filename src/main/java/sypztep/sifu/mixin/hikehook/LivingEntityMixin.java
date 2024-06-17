@@ -1,4 +1,4 @@
-package sypztep.sifu.mixin.graphook;
+package sypztep.sifu.mixin.hikehook;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.BlockState;
@@ -13,11 +13,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
-import sypztep.sifu.api.IGrapHook;
+import sypztep.sifu.common.util.IHikeHook;
 import sypztep.sifu.common.entity.projectile.HookEntity;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity implements IGrapHook {
+public abstract class LivingEntityMixin extends Entity implements IHikeHook {
     @Unique
     public HookEntity hookEntity;
     @Shadow
@@ -69,11 +69,11 @@ public abstract class LivingEntityMixin extends Entity implements IGrapHook {
         }
     }
     @Override
-    public HookEntity getGrapHook() {
+    public HookEntity getHikeHook() {
         return hookEntity;
     }
     @Override
-    public void setGrapHook(HookEntity hookEntity) {
+    public void setHikeHook(HookEntity hookEntity) {
         this.hookEntity = hookEntity;
     }
 }

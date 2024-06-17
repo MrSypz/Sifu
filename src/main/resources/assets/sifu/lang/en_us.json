@@ -23,8 +23,5 @@
   "item.sifu.wardenrite_pickaxe" : "Wardenrite Pickaxe",
   "item.sifu.wardenrite_axe" : "Wardenrite Axe",
   "item.sifu.wardenrite_hoe" : "Wardenrite Hoe",
-
-  "sifu.modifytooltip.carve": "Carve Heal Amount: ",
-
-  "tooltip.sifu.increases_air_mobility": "Increases Air Mobility"
+  "item.sifu.hikehook": "HikeHook"
 }

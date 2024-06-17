@@ -39,7 +39,7 @@ public class ModItems {
     public static Item WARDENRITE_SWORD;
     public static Item WARDENRITE_CLEAVER;
     public static Item WARDENRITE_SCYTHE;
-    public static Item GRAPHOOK;
+    public static Item HIKEHOOK;
 
 
     public static void init() {
@@ -63,7 +63,7 @@ public class ModItems {
         WARDENRITE_CLEAVER = registerCustom3DItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
         WARDENRITE_SCYTHE = registerCustom3DItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
 
-        GRAPHOOK = registerItem("graphook", new GraphookItem(new Item.Settings().maxCount(1).maxDamage(100)));
+        HIKEHOOK = registerItem("hikehook", new GraphookItem(new Item.Settings().maxCount(1).maxDamage(100)));
     }
 
     private static Item registerItem(String name, Item item) {

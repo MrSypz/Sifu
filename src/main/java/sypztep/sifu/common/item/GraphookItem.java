@@ -11,7 +11,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import sypztep.sifu.api.IGrapHook;
+import sypztep.sifu.common.util.IHikeHook;
 import sypztep.sifu.common.entity.projectile.HookEntity;
 
 public class GraphookItem
@@ -23,8 +23,8 @@ public class GraphookItem
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        IGrapHook grapHookPlayer = (IGrapHook) user;
-        HookEntity hookEntity = grapHookPlayer.getGrapHook();
+        IHikeHook grapHookPlayer = (IHikeHook) user;
+        HookEntity hookEntity = grapHookPlayer.getHikeHook();
         if (hookEntity != null) {
             GraphookItem.how(world, user, hookEntity);
         } else {
@@ -46,10 +46,10 @@ public class GraphookItem
     }
 
     private static void how(World world, PlayerEntity player, HookEntity lashingPotatoHookEntity) {
-        IGrapHook grapHookPlayer = (IGrapHook) player;
+        IHikeHook grapHookPlayer = (IHikeHook) player;
         if (!world.isClient()) {
             lashingPotatoHookEntity.discard();
-            grapHookPlayer.setGrapHook(null);
+            grapHookPlayer.setHikeHook(null);
         }
         world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FISHING_BOBBER_RETRIEVE, SoundCategory.NEUTRAL, 1.0f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         player.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);

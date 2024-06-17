@@ -1,4 +1,4 @@
-package sypztep.sifu.mixin.graphook;
+package sypztep.sifu.mixin.hikehook;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

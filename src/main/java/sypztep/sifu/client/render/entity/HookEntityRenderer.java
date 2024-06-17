@@ -51,7 +51,7 @@ public class HookEntityRenderer
         matrixStack.pop();
 
         matrixStack.push();
-        Vec3d vec3d = HookEntityRenderer.getPlayerHandPos(playerEntity, tickDelta, ModItems.GRAPHOOK, this.dispatcher);
+        Vec3d vec3d = HookEntityRenderer.getPlayerHandPos(playerEntity, tickDelta, ModItems.HIKEHOOK, this.dispatcher);
         Vec3d vec3d2 = new Vec3d(MathHelper.lerp(tickDelta, hookEntity.prevX, hookEntity.getX()), MathHelper.lerp(tickDelta, hookEntity.prevY, hookEntity.getY()) + (double)hookEntity.getStandingEyeHeight(), MathHelper.lerp(tickDelta, hookEntity.prevZ, hookEntity.getZ()));
         float h = 0;
         float j = h * 0.15f % 1.0f;

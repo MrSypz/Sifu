@@ -2,7 +2,6 @@ package sypztep.sifu.common.entity.projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -15,16 +14,13 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.network.EntityTrackerEntry;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import sypztep.sifu.api.IGrapHook;
-import sypztep.sifu.common.init.ModDamageTypes;
+import sypztep.sifu.common.util.IHikeHook;
 import sypztep.sifu.common.init.ModEntityTypes;
 import sypztep.sifu.common.init.ModItems;
-import sypztep.sifu.common.util.LivingEntityUtil;
 
 public class HookEntity extends ProjectileEntity {
     public static final TrackedData<Boolean> IN_BLOCK = DataTracker.registerData(HookEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -74,7 +70,7 @@ public class HookEntity extends ProjectileEntity {
         this.checkBlockCollision();
     }
     private boolean discardIfInvalid(PlayerEntity player) {
-        if (player.isRemoved() || !player.isAlive() || !player.isHolding(ModItems.GRAPHOOK) || this.squaredDistanceTo(player) > 10000.0) {
+        if (player.isRemoved() || !player.isAlive() || !player.isHolding(ModItems.HIKEHOOK) || this.squaredDistanceTo(player) > 10000.0) {
             this.discard();
             return true;
         }
@@ -148,9 +144,9 @@ public class HookEntity extends ProjectileEntity {
 
     private void setHookForPlayer(@Nullable HookEntity hookEntity) {
         PlayerEntity playerEntity = this.getPlayer();
-        IGrapHook grapHookPlayer = (IGrapHook) playerEntity;
+        IHikeHook grapHookPlayer = (IHikeHook) playerEntity;
         if (playerEntity != null) {
-            grapHookPlayer.setGrapHook(hookEntity);
+            grapHookPlayer.setHikeHook(hookEntity);
         }
     }
 
