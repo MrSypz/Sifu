@@ -32,16 +32,16 @@ public class HookEntityRenderer
     }
 
     @Override
-    public void render(HookEntity lashingPotatoHookEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        PlayerEntity playerEntity = lashingPotatoHookEntity.getPlayer();
+    public void render(HookEntity hookEntity, float yaw, float tickDelta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+        PlayerEntity playerEntity = hookEntity.getPlayer();
         if (playerEntity == null) {
             return;
         }
         matrixStack.push();
-        this.itemRenderer.renderItem(new ItemStack(Items.IRON_PICKAXE), ModelTransformationMode.GROUND, i, OverlayTexture.DEFAULT_UV, matrixStack, vertexConsumerProvider, lashingPotatoHookEntity.getWorld(), lashingPotatoHookEntity.getId());
-        Vec3d vec3d = HookEntityRenderer.getPlayerHandPos(playerEntity, g, ModItems.GRAPHOOK, this.dispatcher);
-        Vec3d vec3d2 = new Vec3d(MathHelper.lerp(g, lashingPotatoHookEntity.prevX, lashingPotatoHookEntity.getX()), MathHelper.lerp((double)g, lashingPotatoHookEntity.prevY, lashingPotatoHookEntity.getY()) + (double)lashingPotatoHookEntity.getStandingEyeHeight(), MathHelper.lerp((double)g, lashingPotatoHookEntity.prevZ, lashingPotatoHookEntity.getZ()));
-        float h = (float)lashingPotatoHookEntity.age + g;
+        this.itemRenderer.renderItem(new ItemStack(ModItems.WARDENRITE_CLEAVER), ModelTransformationMode.FIRST_PERSON_RIGHT_HAND, i, OverlayTexture.DEFAULT_UV, matrixStack, vertexConsumerProvider, hookEntity.getWorld(), hookEntity.getId());
+        Vec3d vec3d = HookEntityRenderer.getPlayerHandPos(playerEntity, tickDelta, ModItems.GRAPHOOK, this.dispatcher);
+        Vec3d vec3d2 = new Vec3d(MathHelper.lerp(tickDelta, hookEntity.prevX, hookEntity.getX()), MathHelper.lerp(tickDelta, hookEntity.prevY, hookEntity.getY()) + (double)hookEntity.getStandingEyeHeight(), MathHelper.lerp((double)tickDelta, hookEntity.prevZ, hookEntity.getZ()));
+        float h = 0;
         float j = h * 0.15f % 1.0f;
         Vec3d vec3d3 = vec3d.subtract(vec3d2);
         float k = (float)(vec3d3.length() + 0.1);
@@ -51,7 +51,6 @@ public class HookEntityRenderer
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((1.5707964f - m) * 57.295776f));
         matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(l * 57.295776f));
         float n = h * 0.05f * -1.5f;
-        float o = 0.2f;
         float p = MathHelper.cos(n + (float)Math.PI) * 0.2f;
         float q = MathHelper.sin(n + (float)Math.PI) * 0.2f;
         float r = MathHelper.cos(n + 0.0f) * 0.2f;
@@ -60,23 +59,20 @@ public class HookEntityRenderer
         float u = MathHelper.sin(n + 1.5707964f) * 0.2f;
         float v = MathHelper.cos(n + 4.712389f) * 0.2f;
         float w = MathHelper.sin(n + 4.712389f) * 0.2f;
-        float x = k;
-        float y = 0.0f;
-        float z = 0.4999f;
         float aa = -1.0f + j;
         float ab = k * 2.5f + aa;
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityCutoutNoCull(GuardianEntityRenderer.EXPLOSION_BEAM_TEXTURE));
         MatrixStack.Entry entry = matrixStack.peek();
-        HookEntityRenderer.vertex(vertexConsumer, entry, p, x, q, 0.4999f, ab);
+        HookEntityRenderer.vertex(vertexConsumer, entry, p, k, q, 0.4999f, ab);
         HookEntityRenderer.vertex(vertexConsumer, entry, p, 0.0f, q, 0.4999f, aa);
         HookEntityRenderer.vertex(vertexConsumer, entry, r, 0.0f, s, 0.0f, aa);
-        HookEntityRenderer.vertex(vertexConsumer, entry, r, x, s, 0.0f, ab);
-        HookEntityRenderer.vertex(vertexConsumer, entry, t, x, u, 0.4999f, ab);
+        HookEntityRenderer.vertex(vertexConsumer, entry, r, k, s, 0.0f, ab);
+        HookEntityRenderer.vertex(vertexConsumer, entry, t, k, u, 0.4999f, ab);
         HookEntityRenderer.vertex(vertexConsumer, entry, t, 0.0f, u, 0.4999f, aa);
         HookEntityRenderer.vertex(vertexConsumer, entry, v, 0.0f, w, 0.0f, aa);
-        HookEntityRenderer.vertex(vertexConsumer, entry, v, x, w, 0.0f, ab);
+        HookEntityRenderer.vertex(vertexConsumer, entry, v, k, w, 0.0f, ab);
         matrixStack.pop();
-        super.render(lashingPotatoHookEntity, f, g, matrixStack, vertexConsumerProvider, i);
+        super.render(hookEntity, yaw, tickDelta, matrixStack, vertexConsumerProvider, i);
     }
     public static Vec3d getPlayerHandPos(PlayerEntity player, float tickDelta, Item item, EntityRenderDispatcher dispatcher) {
         int i = player.getMainArm() == Arm.RIGHT ? 1 : -1;
