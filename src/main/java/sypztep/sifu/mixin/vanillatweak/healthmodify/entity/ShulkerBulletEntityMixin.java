@@ -17,7 +17,7 @@ public abstract class ShulkerBulletEntityMixin {
     private float onEntityHitMixin(float original) {
         if (ModConfig.enableHealthModify)
             if (((ProjectileEntity) (Object) this).getWorld() instanceof ServerWorld) {
-                return original * (float) MobAttributeModify.getDamageFactor((ProjectileEntity) (Object) this);
+                return original * (float) MobAttributeModify.getDamageFactor();
             }
         return original;
     }

@@ -1,6 +1,5 @@
-package sypztep.sifu.common.item.impl;
+package sypztep.sifu.common.item.combat.impl;
 
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.LivingEntity;
@@ -22,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.Sifu;
 import sypztep.sifu.common.entity.projectile.PortalizeEntity;
 import sypztep.sifu.common.entity.projectile.ShadowShardsEntity;
-import sypztep.sifu.common.item.Warfan;
+import sypztep.sifu.common.item.combat.Warfan;
 import sypztep.sifu.common.util.RaytraceUtil;
 
 import java.util.List;
@@ -64,14 +63,14 @@ public class WardenriteWarfan extends Warfan {
             return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
-        LivingEntity target = RaytraceUtil.raytraceForAimlock(user);
+        LivingEntity target = RaytraceUtil.raytraceForAimlock(user); // raycast to get which target hit
 
         if (world.isClient()) {
             targetParticle(world, target);
             float f = (world.getRandom().nextFloat() - world.getRandom().nextFloat()) * 0.2F + 1.0F;
             user.playSound(SoundEvents.BLOCK_TRIAL_SPAWNER_SPAWN_ITEM_BEGIN, 1f, f);
         } else {
-            spawnShards(world, user);
+            spawnShards(world, user, target);
             user.getItemCooldownManager().set(stack.getItem(), 10);
             decreaseSoulPoints(stack, 1);
             stack.damage(1, user, LivingEntity.getSlotForHand(hand));
@@ -101,9 +100,9 @@ public class WardenriteWarfan extends Warfan {
         }
     }
 
-    private void spawnShards(World world, PlayerEntity user) {
+    private void spawnShards(World world, PlayerEntity user,LivingEntity target) {
         for (int i = 0; i < SHARD_COUNT; i++) {
-            ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6, null);
+            ShadowShardsEntity shardsEntity = new ShadowShardsEntity(world, user, 6, target);
             shardsEntity.setOwner(user);
             PortalizeEntity entity = PortalizeEntity.create(world, shardsEntity, user);
             double angle = 2 * Math.PI * i / SHARD_COUNT;

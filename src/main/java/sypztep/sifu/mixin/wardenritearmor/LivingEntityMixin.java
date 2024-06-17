@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import sypztep.sifu.common.init.ModStatusEffects;
-import sypztep.sifu.common.item.impl.WardenriteArmor;
+import sypztep.sifu.common.item.combat.impl.WardenriteArmor;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {

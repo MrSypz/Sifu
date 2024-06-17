@@ -10,10 +10,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 import sypztep.sifu.Sifu;
-import sypztep.sifu.common.item.Warfan;
-import sypztep.sifu.common.item.impl.WardenriteArmor;
-import sypztep.sifu.common.item.impl.WardenriteSword;
-import sypztep.sifu.common.item.impl.WardenriteWarfan;
+import sypztep.sifu.common.item.GraphookItem;
+import sypztep.sifu.common.item.combat.Warfan;
+import sypztep.sifu.common.item.combat.impl.WardenriteArmor;
+import sypztep.sifu.common.item.combat.impl.WardenriteSword;
+import sypztep.sifu.common.item.combat.impl.WardenriteWarfan;
 
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,8 @@ public class ModItems {
     public static Item WARDENRITE_SWORD;
     public static Item WARDENRITE_CLEAVER;
     public static Item WARDENRITE_SCYTHE;
+    public static Item GRAPHOOK;
+
 
     public static void init() {
         WARDENRITE_FRAGMENT = registerItem("wardenrite_fragment", new Item(new Item.Settings().maxCount(9).rarity(Rarity.EPIC)));
@@ -60,6 +63,7 @@ public class ModItems {
         WARDENRITE_CLEAVER = registerCustom3DItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
         WARDENRITE_SCYTHE = registerCustom3DItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
 
+        GRAPHOOK = registerItem("graphook", new GraphookItem(new Item.Settings().maxCount(1).maxDamage(100)));
     }
 
     private static Item registerItem(String name, Item item) {

@@ -23,7 +23,7 @@ public abstract class GuardianEntityMixin extends HostileEntity {
     private float damageMixin(float original) {
         if (ModConfig.enableHealthModify)
             if (this.getWorld() instanceof ServerWorld) {
-                return original * (float) MobAttributeModify.getDamageFactor(this);
+                return original * (float) MobAttributeModify.getDamageFactor();
             }
         return original;
     }

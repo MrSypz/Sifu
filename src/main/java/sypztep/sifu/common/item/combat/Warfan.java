@@ -1,4 +1,4 @@
-package sypztep.sifu.common.item;
+package sypztep.sifu.common.item.combat;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;

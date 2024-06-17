@@ -17,9 +17,6 @@ public class ModConfig extends MidnightConfig {
     @Entry public static double startingFactor = 1.0D;
     @Entry public static double creeperExplosionFactor = 2.5D;
 
-    public static ArrayList<String> excludedEntity = new ArrayList<>(List.of("the_bumblezone:cosmic_crystal_entity"));
-
-
     static {
         MidnightConfig.init(Sifu.MODID, ModConfig.class);
     }

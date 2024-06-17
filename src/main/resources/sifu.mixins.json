@@ -4,6 +4,8 @@
   "package": "sypztep.sifu.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "graphook.LivingEntityMixin",
+    "graphook.PlayerEntityMixin",
     "util.DefaultAttributeRegistryAccess",
     "util.PersistentProjectileEntityMixin",
     "util.PlayerEntityMixin",

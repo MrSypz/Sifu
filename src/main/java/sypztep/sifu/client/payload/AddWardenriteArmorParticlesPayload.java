@@ -8,7 +8,7 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.network.ServerPlayerEntity;
-import sypztep.sifu.common.item.impl.WardenriteArmor;
+import sypztep.sifu.common.item.combat.impl.WardenriteArmor;
 
 public record AddWardenriteArmorParticlesPayload(int entityId, int i) implements CustomPayload {
     public static final Id<AddWardenriteArmorParticlesPayload> ID = CustomPayload.id("add_wardenrite_armor_particles");

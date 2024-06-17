@@ -1,1 +1,2 @@
 accessWidener	v1	named
+accessible field net/minecraft/client/render/entity/GuardianEntityRenderer EXPLOSION_BEAM_TEXTURE Lnet/minecraft/util/Identifier;

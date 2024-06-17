@@ -23,7 +23,7 @@ public abstract class WitherSkullEntityMixin extends ExplosiveProjectileEntity {
     private float onEntityHitMixin(float original) {
         if (ModConfig.enableHealthModify)
             if (this.getWorld() instanceof ServerWorld) {
-                return original * (float) MobAttributeModify.getDamageFactor(this);
+                return original * (float) MobAttributeModify.getDamageFactor();
             }
         return original;
     }

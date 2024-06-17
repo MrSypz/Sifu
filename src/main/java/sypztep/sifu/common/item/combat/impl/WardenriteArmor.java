@@ -1,4 +1,4 @@
-package sypztep.sifu.common.item.impl;
+package sypztep.sifu.common.item.combat.impl;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
