@@ -6,6 +6,11 @@
 
   "upgrade.sifu.wardenrite_upgrade": "Wardenrite Upgrade",
 
+  "subtitles.sifu.entity.stygia": "Stygia Activate",
+  "subtitles.sifu.entity.hike": "HikeHook Hit",
+  "subtitles.sifu.entity.click": "HikeHook Shot",
+  "subtitles.sifu.entity.flyhook": "HikeHook Fly",
+
   "item.sifu.wardenrite_upgrade_smithing_template" : "Wardenrite Template",
   "item.sifu.smithing_template.wardenrite_upgrade.applies_to" : "Netherite Equipment",
   "item.sifu.smithing_template.wardenrite_upgrade.ingredients" : "Wardenrite Ingot",
