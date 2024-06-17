@@ -11,8 +11,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import sypztep.sifu.common.util.IHikeHook;
 import sypztep.sifu.common.entity.projectile.HookEntity;
+import sypztep.sifu.common.init.ModSoundEvents;
+import sypztep.sifu.common.util.IHikeHook;
 
 public class GraphookItem
         extends Item {
@@ -26,32 +27,32 @@ public class GraphookItem
         IHikeHook grapHookPlayer = (IHikeHook) user;
         HookEntity hookEntity = grapHookPlayer.getHikeHook();
         if (hookEntity != null) {
-            GraphookItem.how(world, user, hookEntity);
+            GraphookItem.rellback(world, user, hookEntity);
         } else {
             if (!world.isClient) {
                 itemStack.damage(1, user, LivingEntity.getSlotForHand(hand));
             }
-            this.what(world, user);
+            this.shot(world, user);
         }
         return TypedActionResult.success(itemStack, world.isClient);
     }
 
-    private void what(World world, PlayerEntity player) {
+    private void shot(World world, PlayerEntity player) {
         if (!world.isClient) {
             world.spawnEntity(new HookEntity(world, player));
         }
         player.incrementStat(Stats.USED.getOrCreateStat(this));
-        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FISHING_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
+        world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundEvents.ENTITY_SHOT, SoundCategory.NEUTRAL, 1.0f, 1.6f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         player.emitGameEvent(GameEvent.ITEM_INTERACT_START);
     }
 
-    private static void how(World world, PlayerEntity player, HookEntity lashingPotatoHookEntity) {
+    private static void rellback(World world, PlayerEntity player, HookEntity lashingPotatoHookEntity) {
         IHikeHook grapHookPlayer = (IHikeHook) player;
         if (!world.isClient()) {
             lashingPotatoHookEntity.discard();
             grapHookPlayer.setHikeHook(null);
         }
-        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_FISHING_BOBBER_RETRIEVE, SoundCategory.NEUTRAL, 1.0f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
+        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_LEASH_KNOT_PLACE, SoundCategory.NEUTRAL, 1.0f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         player.emitGameEvent(GameEvent.ITEM_INTERACT_FINISH);
     }
 }
