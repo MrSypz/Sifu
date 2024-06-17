@@ -103,7 +103,6 @@ public class HookEntity extends ProjectileEntity {
         this.setInBlock(true);
         this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSoundEvents.ENTITY_HIKE, SoundCategory.PLAYERS, 3.5f, 1.0f / (this.getWorld().getRandom().nextFloat() * 0.4f + 0.8f));
         addParticle(this, i, blockState);
-        if (!this.getWorld().isClient()) HookLandPayload.send();
         PlayerEntity playerEntity = this.getPlayer();
         if (playerEntity != null) {
             double d = playerEntity.getEyePos().subtract(blockHitResult.getPos()).length();
