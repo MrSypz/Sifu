@@ -33,8 +33,8 @@ public abstract class PlayerEntityMixin extends LivingEntityMixin {
     }
     @Override
     protected void slipy(Vec3d vec3d, double d, float f) {
-        if (this.hookEntity.isInBlock() && !this.isOnGround()) {
-            this.setVelocity(vec3d.x * (double)0.99f, d * (double)1.095f, vec3d.z * (double)0.99f);
+        if (this.hookEntity != null && this.hookEntity.isInBlock() && !this.isOnGround()) {
+            this.setVelocity(vec3d.x * (double)0.99f, d * (double)0.995f, vec3d.z * (double)0.99f);
         }
         super.slipy(vec3d, d, f);
     }
