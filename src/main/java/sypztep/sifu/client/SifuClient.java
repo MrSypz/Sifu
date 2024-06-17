@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.MinecraftClient;
-import sypztep.sifu.client.payload.AddHookLandParticlesPayload;
 import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.client.render.entity.HookEntityRenderer;
 import sypztep.sifu.client.render.entity.NeedleEntityRenderer;
@@ -37,6 +36,5 @@ public class SifuClient implements ClientModInitializer {
 
     private void initPayloads() {
         ClientPlayNetworking.registerGlobalReceiver(AddWardenriteArmorParticlesPayload.ID, new AddWardenriteArmorParticlesPayload.Receiver());
-        ClientPlayNetworking.registerGlobalReceiver(AddHookLandParticlesPayload.ID, new AddHookLandParticlesPayload.Receiver());
     }
 }

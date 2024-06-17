@@ -28,7 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.common.init.ModEntityTypes;
 import sypztep.sifu.common.init.ModItems;
 import sypztep.sifu.common.init.ModSoundEvents;
-import sypztep.sifu.common.payload.HookLandPayload;
 import sypztep.sifu.common.util.IHikeHook;
 
 public class HookEntity extends ProjectileEntity {
