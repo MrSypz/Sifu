@@ -14,7 +14,7 @@ public class ModEntityTypes {
 	public static final EntityType<NeedleEntity> NEEDLE = EntityType.Builder.<NeedleEntity>create(NeedleEntity::new, SpawnGroup.MISC).dimensions(EntityType.ARROW.getWidth(), EntityType.ARROW.getHeight()).build();
 	public static final EntityType<ShadowShardsEntity> SHADOW_SHARDS  = EntityType.Builder.<ShadowShardsEntity>create(ShadowShardsEntity::new, SpawnGroup.MISC).dimensions(EntityType.ARROW.getWidth(), EntityType.ARROW.getHeight()).maxTrackingRange(32).build();
 	public static final EntityType<PortalizeEntity> PORTALIZE = EntityType.Builder.<PortalizeEntity>create(PortalizeEntity::new, SpawnGroup.MISC).dimensions(0.25f,0.25f).maxTrackingRange(8).build();
-	public static final EntityType<HookEntity> HOOK = EntityType.Builder.<HookEntity>create(HookEntity::new, SpawnGroup.MISC).disableSaving().disableSummon().dimensions(0.25f,0.25f).maxTrackingRange(4).trackingTickInterval(5).build();
+	public static final EntityType<HookEntity> HOOK = EntityType.Builder.<HookEntity>create(HookEntity::new, SpawnGroup.MISC).disableSaving().disableSummon().dimensions(0.25f,0.25f).maxTrackingRange(8).trackingTickInterval(5).build();
 
 	public static void init() {
 		Registry.register(Registries.ENTITY_TYPE, Sifu.id("needle"), NEEDLE);
