@@ -1,4 +1,4 @@
-// 1.21	2024-06-16T14:53:20.4148287	Sifu/Model Definitions
+// 1.21	2024-06-17T20:09:36.3087124	Sifu/Model Definitions
 f5cbeffe70b3a0174d2a6accf19741cd05208e9b assets\sifu\models\item\wardenrite_helmet_iron_trim.json
 0fb0a7602c217765fe3809332eb106f966dcef92 assets\sifu\models\item\wardenrite_pickaxe.json
 de75c307e1cef13738a4fa73b403b9547e14bb65 assets\sifu\models\item\wardenrite_boots_iron_trim.json
@@ -6,8 +6,8 @@ e8615e4bba285bf3fbae5a77ea75656b57817563 assets\sifu\models\item\wardenrite_legg
 1df5b83c564c3277654670856f6d35d2c87cecf2 assets\sifu\models\item\wardenrite_chestplate_iron_trim.json
 1a11b6871070a1cb0c86b4dba983bccfa84ce36d assets\sifu\models\item\wardenrite_hoe.json
 a428cb409feec96b5118f4a735e5da6faee018c6 assets\sifu\models\item\wardenrite_fragment.json
-c131a0e290d605422af960626356dfa0edd7bb25 assets\sifu\models\item\wardenrite_helmet_emerald_trim.json
 813611d99153c09dd5092e5d4757bfac01745499 assets\sifu\models\item\wardenrite_leggings_iron_trim.json
+c131a0e290d605422af960626356dfa0edd7bb25 assets\sifu\models\item\wardenrite_helmet_emerald_trim.json
 57eb5a801da9e07793d7d9fa012b12a7f7223280 assets\sifu\models\item\wardenrite_boots_netherite_trim.json
 48e58590189cdfcd60e1bf1ae563de183a2d29be assets\sifu\models\item\wardenrite_helmet_copper_trim.json
 d8db07274d247ede5475cb701eb4e6ccb9086014 assets\sifu\models\item\wardenrite_chestplate_copper_trim.json
@@ -16,6 +16,7 @@ f6750f6ae18f973a8e0f1be509befec9feb4d006 assets\sifu\models\item\wardenrite_helm
 20f097663b31fbab07ed8b58d4f3b176b2b26b5f assets\sifu\models\item\wardenrite_shovel.json
 1e28e3e2df53763bc731d37957c5a4b9a245b860 assets\sifu\models\item\wardenrite_chestplate_emerald_trim.json
 c52ac0caf4f60a4d59c926d01383f65a4d030d17 assets\sifu\models\item\wardenrite_upgrade_smithing_template.json
+3f8965d30b61ad044e462ebefa14d49dd88add40 assets\sifu\models\item\graphook_extended.json
 02a2c81276c62f4f195c7e7991277ff626a91986 assets\sifu\models\item\wardenrite_leggings_copper_trim.json
 2c5263608626675d4b669643ba127c8b454b520a assets\sifu\models\item\wardenrite_ingot.json
 c097554997c5e9d89acaf7512d3c85cc47afddea assets\sifu\models\item\wardenrite_helmet_redstone_trim.json

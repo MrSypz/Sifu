@@ -2,6 +2,7 @@ package sypztep.sifu.common.entity.projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.boss.dragon.EnderDragonPart;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -14,19 +15,20 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.network.EntityTrackerEntry;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import sypztep.sifu.api.IGrapHook;
+import sypztep.sifu.common.init.ModDamageTypes;
 import sypztep.sifu.common.init.ModEntityTypes;
 import sypztep.sifu.common.init.ModItems;
+import sypztep.sifu.common.util.LivingEntityUtil;
 
 public class HookEntity extends ProjectileEntity {
     public static final TrackedData<Boolean> IN_BLOCK = DataTracker.registerData(HookEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     public static final TrackedData<Float> LENGTH = DataTracker.registerData(HookEntity.class, TrackedDataHandlerRegistry.FLOAT);
-    private static final float field_50487 = 100.0f;
-    private static final double field_50488 = 5.0;
 
     public HookEntity(EntityType<? extends HookEntity> entityType, World world) {
         super(entityType, world);
@@ -43,7 +45,7 @@ public class HookEntity extends ProjectileEntity {
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
         builder.add(IN_BLOCK, false);
-        builder.add(LENGTH, Float.valueOf(0.0f));
+        builder.add(LENGTH, 0.0f);
     }
 
     @Override
@@ -95,7 +97,6 @@ public class HookEntity extends ProjectileEntity {
             this.setLength(Math.max((float)d * 0.5f - 3.0f, 1.5f));
         }
     }
-
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         nbt.putBoolean("in_block", this.isInBlock());
@@ -113,14 +114,14 @@ public class HookEntity extends ProjectileEntity {
     }
 
     private void setLength(float length) {
-        this.getDataTracker().set(LENGTH, Float.valueOf(length));
+        this.getDataTracker().set(LENGTH, length);
     }
 
     public boolean isInBlock() {
         return this.getDataTracker().get(IN_BLOCK);
     }
     public float getLength() {
-        return this.getDataTracker().get(LENGTH).floatValue();
+        return this.getDataTracker().get(LENGTH);
     }
 
     @Override
