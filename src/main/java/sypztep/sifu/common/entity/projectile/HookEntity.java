@@ -1,5 +1,6 @@
 package sypztep.sifu.common.entity.projectile;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.data.DataTracker;
@@ -12,15 +13,23 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.EntityTrackerEntry;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import sypztep.sifu.common.util.IHikeHook;
 import sypztep.sifu.common.init.ModEntityTypes;
 import sypztep.sifu.common.init.ModItems;
+import sypztep.sifu.common.init.ModSoundEvents;
+import sypztep.sifu.common.payload.HookLandPayload;
+import sypztep.sifu.common.util.IHikeHook;
 
 public class HookEntity extends ProjectileEntity {
     public static final TrackedData<Boolean> IN_BLOCK = DataTracker.registerData(HookEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -35,7 +44,8 @@ public class HookEntity extends ProjectileEntity {
         super(ModEntityTypes.HOOK, world);
         this.setOwner(player);
         this.setPosition(player.getX(), player.getEyeY() - 0.1, player.getZ());
-        this.setVelocity(player.getRotationVec(1.0f).multiply(5.0));
+        this.refreshPositionAndAngles(player.getX(), player.getEyeY(), player.getZ(), player.getYaw(), player.getPitch());
+        this.setVelocity(player, player.getPitch(), player.getYaw(), 0, 2.75f, 0);
     }
 
     @Override
@@ -69,6 +79,7 @@ public class HookEntity extends ProjectileEntity {
         this.setPosition(hitResult.getPos());
         this.checkBlockCollision();
     }
+
     private boolean discardIfInvalid(PlayerEntity player) {
         if (player.isRemoved() || !player.isAlive() || !player.isHolding(ModItems.HIKEHOOK) || this.squaredDistanceTo(player) > 10000.0) {
             this.discard();
@@ -85,14 +96,28 @@ public class HookEntity extends ProjectileEntity {
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
         super.onBlockHit(blockHitResult);
+        BlockPos blockPos = blockHitResult.getBlockPos();
+        BlockState blockState = this.getWorld().getBlockState(blockPos);
+        Direction direction = this.getFacing().getOpposite();
+        int i = (int) MathHelper.clamp(50.0F * this.getVelocity().length(), 0.0F, 200.0F);
         this.setVelocity(Vec3d.ZERO);
         this.setInBlock(true);
+        this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), ModSoundEvents.ENTITY_HIKE, SoundCategory.PLAYERS, 3.5f, 1.0f / (this.getWorld().getRandom().nextFloat() * 0.4f + 0.8f));
+        addParticle(this, i, blockState);
+        if (!this.getWorld().isClient()) HookLandPayload.send();
         PlayerEntity playerEntity = this.getPlayer();
         if (playerEntity != null) {
             double d = playerEntity.getEyePos().subtract(blockHitResult.getPos()).length();
-            this.setLength(Math.max((float)d * 0.5f - 3.0f, 1.5f));
+            this.setLength(Math.max((float) d * 0.5f - 3.0f, 1.5f));
         }
     }
+
+
+    public static void addParticle(HookEntity entity, int i, BlockState state) {
+        for (int j = 0; j < i; j++)
+            entity.getWorld().addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, state), true, entity.getX(), entity.getY(), entity.getZ(), 0.30000001192092896, 0.30000001192092896, 0.15000000596046448);
+    }
+
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         nbt.putBoolean("in_block", this.isInBlock());
@@ -116,6 +141,7 @@ public class HookEntity extends ProjectileEntity {
     public boolean isInBlock() {
         return this.getDataTracker().get(IN_BLOCK);
     }
+
     public float getLength() {
         return this.getDataTracker().get(LENGTH);
     }
@@ -153,12 +179,14 @@ public class HookEntity extends ProjectileEntity {
     @Nullable
     public PlayerEntity getPlayer() {
         Entity entity = this.getOwner();
-        return entity instanceof PlayerEntity ? (PlayerEntity)entity : null;
+        return entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
     }
+
     @Override
     public boolean canUsePortals(boolean allowVehicles) {
         return false;
     }
+
     @Override
     public Packet<ClientPlayPacketListener> createSpawnPacket(EntityTrackerEntry entityTrackerEntry) {
         Entity entity = this.getOwner();
