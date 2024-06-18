@@ -31,6 +31,7 @@ public class ModItemGroups {
             content.addAfter(ModItems.WARDENRITE_SHOVEL, ModItems.WARDENRITE_PICKAXE);
             content.addAfter(ModItems.WARDENRITE_PICKAXE, ModItems.WARDENRITE_AXE);
             content.addAfter(ModItems.WARDENRITE_AXE, ModItems.WARDENRITE_HOE);
+            content.addAfter(Items.ELYTRA, ModItems.HIKEHOOK);
         });
     }
 }

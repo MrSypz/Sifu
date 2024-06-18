@@ -84,10 +84,6 @@
 			}
 		}
 	],
-	"gui_light": "front",
-	"overrides": [
-		{"predicate": {"graphook_extended": 1}, "model": "sifu:item/graphook_extended"}
-	],
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [90, 0, 0],
