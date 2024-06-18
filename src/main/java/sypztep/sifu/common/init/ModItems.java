@@ -59,9 +59,9 @@ public class ModItems {
         WARDENRITE_UPGRADE_SMITHING_TEMPLATE = registerItem("wardenrite_upgrade_smithing_template", createWardenriteUpgradeSmithingTemplate());
 
         WARDENRITE_WARFAN = registerCustom3DItem("wardenrite_warfan", new WardenriteWarfan(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(Warfan.createAttributeModifiers(ModToolMaterials.WARDENRITE, 2, -2,-0.5)).rarity(Rarity.EPIC)));
-        WARDENRITE_SWORD = registerCustom3DItem("wardenrite_sword", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 5, -2.4f)).rarity(Rarity.EPIC)));
-        WARDENRITE_CLEAVER = registerCustom3DItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
-        WARDENRITE_SCYTHE = registerCustom3DItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
+        WARDENRITE_SWORD = registerItem("wardenrite_sword", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 5, -2.4f)).rarity(Rarity.EPIC)));
+        WARDENRITE_CLEAVER = registerItem("wardenrite_cleaver", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
+        WARDENRITE_SCYTHE = registerItem("wardenrite_scythe", new WardenriteSword(ModToolMaterials.WARDENRITE, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.WARDENRITE, 7, -3.0f)).rarity(Rarity.EPIC)));
 
         HIKEHOOK = registerItem("hikehook", new GraphookItem(new Item.Settings().maxCount(1).maxDamage(325)));
     }

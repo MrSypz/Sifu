@@ -97,7 +97,6 @@ public class HookEntity extends ProjectileEntity {
         super.onBlockHit(blockHitResult);
         BlockPos blockPos = blockHitResult.getBlockPos();
         BlockState blockState = this.getWorld().getBlockState(blockPos);
-        Direction direction = this.getFacing().getOpposite();
         int i = (int) MathHelper.clamp(50.0F * this.getVelocity().length(), 0.0F, 200.0F);
         this.setVelocity(Vec3d.ZERO);
         this.setInBlock(true);
