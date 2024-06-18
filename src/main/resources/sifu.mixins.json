@@ -25,8 +25,5 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "client": [
-    "hikehook.PlayerEntityRendererMixin"
-  ]
+  }
 }
