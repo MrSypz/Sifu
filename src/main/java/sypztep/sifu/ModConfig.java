@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ModConfig extends MidnightConfig {
     @Entry public static boolean enableHealthModify = true;
-    @Entry public static double maxFactorHealth = 4.0D;
+    @Entry public static double maxFactorHealth = 2.0D;
     @Entry public static double maxFactorDamage = 3.5D;
     @Entry public static double maxFactorProtection = 3.5D;
     @Entry public static double maxFactorSpeed = 1.15D;
