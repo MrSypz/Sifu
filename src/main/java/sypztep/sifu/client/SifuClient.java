@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.MinecraftClient;
 import sypztep.sifu.client.event.HookSoundEvent;
 import sypztep.sifu.client.payload.AddWardenriteArmorParticlesPayload;
 import sypztep.sifu.client.render.entity.HookEntityRenderer;
@@ -16,8 +15,6 @@ import sypztep.sifu.client.render.entity.ShadowShardsEntityRenderer;
 import sypztep.sifu.client.render.item.DynamicItemRenderer;
 import sypztep.sifu.client.render.item.LoadingCustomModelImpl;
 import sypztep.sifu.client.render.model.ShadowShardModel;
-import sypztep.sifu.client.sound.HookSoundInstance;
-import sypztep.sifu.common.entity.projectile.HookEntity;
 import sypztep.sifu.common.init.ModEntityTypes;
 
 public class SifuClient implements ClientModInitializer {
@@ -32,7 +29,7 @@ public class SifuClient implements ClientModInitializer {
 
         EntityModelLayerRegistry.registerModelLayer(ShadowShardModel.MODEL_LAYER, ShadowShardModel::getTexturedModelData);
 
-        DynamicItemRenderer.init();
+        DynamicItemRenderer.initItemResource();
         ClientEntityEvents.ENTITY_LOAD.register(new HookSoundEvent());
     }
 

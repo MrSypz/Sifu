@@ -77,7 +77,7 @@ public class DynamicItemRenderer implements BuiltinItemRendererRegistry.DynamicI
         this.inventoryModel = client.getBakedModelManager().getModel(Sifu.id("item/" + this.weaponId + "_gui"));
         this.worldModel = client.getBakedModelManager().getModel(Sifu.id("item/" + this.weaponId + "_handheld"));
     }
-    public static void init() {
+    public static void initItemResource() {
         for (Item item : ModItems.ALL_CUSTOM3D) {
             String weaponName = Registries.ITEM.getId(item).getPath();
 
